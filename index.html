@@ -1,0 +1,719 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-Wv5ASi3tVuRilZYGDPdOXr1HK6aLm2H+2QS9MY4MzHw='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'none'; base-uri 'none'; form-action 'self'; object-src 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>inOffing</title>
+<meta name="description" content="inOffing Smart Spaces: diseño y construcción de gimnasios, oficinas y locales gastronómicos para empresas, llave en mano.">
+<link rel="canonical" href="https://inoffing.github.io/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="inOffing">
+<meta property="og:locale" content="es_AR">
+<meta property="og:url" content="https://inoffing.github.io/">
+<meta property="og:title" content="inOffing Smart Spaces">
+<meta property="og:description" content="Diseño y construcción de gimnasios, oficinas y locales gastronómicos para empresas, llave en mano.">
+<meta property="og:image" content="https://inoffing.github.io/img/hero.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="960">
+<meta property="og:image:height" content="1280">
+<meta property="og:image:alt" content="Recepción de Nitro Gym Castelar, proyecto de inOffing">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="img/logo.png">
+<style>
+:root{
+  --bg:#FFFFFF;
+  --bg-2:#F3F6F1;
+  --ink:#2B2624;
+  --ink-2:#55504B;
+  --ink-3:#8A857D;
+  --line:#E3E6DF;
+  --green:#63B356;
+  --green-2:#2F7A28;
+  --green-3:#DDEFD9;
+  --on-green:#14240F;
+  --logo-ink:#3A3230;
+  --logo-gray:#6B675D;
+  --dark:#141414;
+  --forest:#1D3A20;
+  --on-dark:#F2F4EF;
+  --on-dark-2:#A7ADA2;
+  --dark-line:#2C2C2C;
+  --display:'Poppins',system-ui,sans-serif;
+  --sans:'Inter',system-ui,-apple-system,sans-serif;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#111311;--bg-2:#181C18;--ink:#EEF1EC;--ink-2:#BAC0B5;--ink-3:#858C80;--line:#283028;
+    --green-2:#7FCB72;--green-3:#1E3320;--logo-ink:#EEF1EC;--logo-gray:#A7ADA2;
+    --dark:#0A0B0A;--forest:#132915;--dark-line:#262926;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#111311;--bg-2:#181C18;--ink:#EEF1EC;--ink-2:#BAC0B5;--ink-3:#858C80;--line:#283028;
+  --green-2:#7FCB72;--green-3:#1E3320;--logo-ink:#EEF1EC;--logo-gray:#A7ADA2;
+  --dark:#0A0B0A;--forest:#132915;--dark-line:#262926;
+  color-scheme:dark;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit}
+button{font:inherit;color:inherit}
+.wrap{max-width:1240px;margin:0 auto;padding:0 32px}
+@media (max-width:600px){.wrap{padding:0 18px}}
+
+.eyebrow{font:600 12.5px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--green-2);display:inline-flex;align-items:center;gap:10px;margin-bottom:18px}
+.eyebrow::before{content:"";width:22px;height:3px;border-radius:2px;background:var(--green)}
+.h2{font-family:var(--display);font-weight:700;font-size:clamp(32px,4.2vw,52px);line-height:1.08;letter-spacing:-.03em}
+.h2 .g{color:var(--green)}
+.lead{font-size:18px;color:var(--ink-2);max-width:54ch}
+.pill{display:inline-flex;align-items:center;gap:10px;font:600 15px/1 var(--display);padding:16px 28px;border-radius:999px;text-decoration:none;border:2px solid currentColor;background:transparent;cursor:pointer;transition:background .2s,color .2s,border-color .2s,transform .2s}
+.pill:hover{transform:translateY(-1px)}
+.pill-light{color:#fff}
+.pill-light:hover{background:#fff;color:#111;border-color:#fff}
+.pill-dark{color:var(--ink)}
+.pill-dark:hover{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.pill-green{background:var(--green);border-color:var(--green);color:var(--on-green)}
+.pill-green:hover{background:#74C267;border-color:#74C267}
+.pill svg{width:16px;height:16px}
+.sec{padding:120px 0}
+@media (max-width:760px){.sec{padding:80px 0}}
+.head{display:flex;justify-content:space-between;align-items:flex-end;gap:32px;margin-bottom:52px}
+@media (max-width:760px){.head{flex-direction:column;align-items:flex-start;gap:18px;margin-bottom:36px}}
+.sk{fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;filter:url(#rough)}
+
+/* LOGO */
+.logo{display:inline-flex;text-decoration:none;line-height:0}
+.logo img{height:46px;width:auto}
+footer .logo img{height:52px}
+@media (max-width:600px){.nav .logo img{height:40px}}
+.logo b{font:700 27px/1 var(--display);letter-spacing:-.035em;color:var(--logo-ink)}
+.logo b span{color:var(--green)}
+.logo small{font:700 8.5px/1 var(--display);letter-spacing:.2em;color:var(--logo-gray);margin-top:5px;padding-left:1px}
+
+/* HEADER */
+.nav{position:sticky;top:0;z-index:60;background:var(--bg);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:80px;gap:24px}
+.nav ul{display:flex;list-style:none;gap:32px;align-items:center}
+.nav ul a{text-decoration:none;font:600 14.5px var(--display);color:var(--ink)}
+.nav ul a:hover{color:var(--green-2)}
+.nav ul a.cta{background:var(--green);color:var(--on-green);padding:11px 20px;border-radius:999px}
+.nav ul a.cta:hover{background:#74C267;color:var(--on-green)}
+.burger{display:none;background:none;border:0;cursor:pointer;padding:8px}
+.burger svg{width:26px;height:26px}
+@media (max-width:980px){
+  .burger{display:block}
+  .nav ul{display:none;position:absolute;top:80px;left:0;right:0;background:var(--bg);flex-direction:column;align-items:stretch;gap:0;padding:8px 18px 20px;border-bottom:1px solid var(--line)}
+  .nav ul.open{display:flex}
+  .nav ul a{display:block;padding:14px 0;border-bottom:1px solid var(--line);font-size:17px}
+  .nav ul a.cta{margin-top:14px;text-align:center;border:0}
+}
+
+/* HERO */
+.hero{position:relative;min-height:min(90vh,840px);display:flex;align-items:flex-end;color:#fff;overflow:hidden;background:#111}
+.hero>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 44%}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.78) 0%,rgba(0,0,0,.5) 42%,rgba(0,0,0,.05) 78%),linear-gradient(0deg,rgba(0,0,0,.6) 0%,rgba(0,0,0,0) 45%)}
+.hero .wrap{position:relative;z-index:1;width:100%;padding-bottom:84px;padding-top:120px}
+.badge{display:inline-flex;align-items:center;gap:10px;font:600 13px var(--display);padding:8px 16px 8px 8px;border-radius:999px;background:rgba(255,255,255,.12);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.22);margin-bottom:26px}
+.badge i{font-style:normal;background:var(--green);color:var(--on-green);padding:5px 11px;border-radius:999px;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase}
+.hero h1{font-family:var(--display);font-weight:700;font-size:clamp(44px,7vw,94px);line-height:1;letter-spacing:-.04em;max-width:12ch;margin-bottom:24px}
+.hero h1 .g{color:var(--green)}
+.hero p{font-size:19px;max-width:48ch;color:rgba(255,255,255,.86);margin-bottom:36px}
+.ctas{display:flex;gap:14px;flex-wrap:wrap}
+.hero-cap{position:absolute;right:32px;bottom:30px;z-index:1;font:500 12.5px var(--sans);color:rgba(255,255,255,.72)}
+@media (max-width:760px){.hero{min-height:680px}.hero::after{background:linear-gradient(0deg,rgba(0,0,0,.9) 0%,rgba(0,0,0,.66) 60%,rgba(0,0,0,.4) 100%)}.hero .wrap{padding-bottom:60px}.hero-cap{display:none}}
+
+/* NITRO BAND (caso cadena) */
+.band{display:grid;grid-template-columns:1fr 1fr;min-height:560px}
+.band-img{position:relative;overflow:hidden}
+.band-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.band-body{background:var(--dark);color:var(--on-dark);padding:88px 72px;display:flex;flex-direction:column;justify-content:center}
+.band-body .eyebrow{color:#8FD184}
+.band-body .h2{color:#fff;margin-bottom:18px}
+.band-body p{color:var(--on-dark-2);margin-bottom:30px;max-width:46ch}
+.sedes{list-style:none;border-top:1px solid var(--dark-line);max-width:460px}
+.sedes li{display:flex;justify-content:space-between;padding:15px 0;border-bottom:1px solid var(--dark-line);font:600 17px var(--display)}
+.sedes li span{font:600 12px var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--on-dark-2);align-self:center}
+.sedes li span.on{color:#8FD184}
+@media (max-width:900px){.band{grid-template-columns:1fr}.band-img{aspect-ratio:4/3}.band-body{padding:56px 22px}}
+
+/* PROYECTOS DESTACADOS */
+.feat{display:grid;grid-template-columns:1.35fr 1fr;gap:56px;align-items:center;margin-bottom:120px}
+.feat:last-of-type{margin-bottom:0}
+.feat.rev{grid-template-columns:1fr 1.35fr}
+.feat.rev .feat-media{order:2}
+.feat-media{display:grid;grid-template-columns:2fr 1fr;grid-template-rows:1fr 1fr;gap:12px;aspect-ratio:16/11}
+.feat-media figure{position:relative;overflow:hidden;border-radius:6px;background:var(--bg-2)}
+.feat-media figure:first-child{grid-row:1/3}
+.feat-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .8s}
+.feat-media figure:hover img{transform:scale(1.04)}
+.feat-body .num{font:700 15px var(--display);color:var(--green-2);margin-bottom:14px;display:block}
+.feat-body h3{font:700 clamp(34px,4vw,50px)/1.02 var(--display);letter-spacing:-.035em;margin-bottom:8px}
+.feat-body .loc{font:500 14.5px var(--sans);color:var(--ink-3);margin-bottom:20px;display:block}
+.feat-body p{color:var(--ink-2);margin-bottom:24px}
+.scope{list-style:none;display:flex;flex-wrap:wrap;gap:8px}
+.scope li{font:500 13.5px var(--sans);padding:7px 14px;border-radius:999px;background:var(--green-3);color:var(--ink)}
+@media (max-width:960px){.feat,.feat.rev{grid-template-columns:1fr;gap:28px;margin-bottom:80px}.feat.rev .feat-media{order:0}.feat-media{aspect-ratio:4/3.4}}
+@media (max-width:520px){.feat-media{grid-template-columns:1fr 1fr;grid-template-rows:auto auto;aspect-ratio:auto}.feat-media figure:first-child{grid-column:1/3;grid-row:auto;aspect-ratio:4/3}.feat-media figure{aspect-ratio:1}}
+
+.more{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:120px}
+.card{display:flex;flex-direction:column;background:var(--bg);border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.card-img{aspect-ratio:4/3;overflow:hidden;position:relative}
+.card-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .8s}
+.card:hover .card-img img{transform:scale(1.04)}
+.card-body{padding:22px 24px 26px}
+.card-body .rub{font:600 12px var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--green-2)}
+.card-body h3{font:700 23px/1.15 var(--display);letter-spacing:-.025em;margin:8px 0 4px}
+.card-body .loc{font-size:13.5px;color:var(--ink-3);display:block;margin-bottom:10px}
+.card-body p{font-size:14.5px;color:var(--ink-2)}
+@media (max-width:960px){.more{grid-template-columns:1fr 1fr;margin-top:80px}}
+@media (max-width:600px){.more{grid-template-columns:1fr}}
+
+/* VALUE */
+.value{display:grid;grid-template-columns:1.1fr 1fr;gap:80px;align-items:start}
+.pillars{list-style:none;border-top:3px solid var(--green)}
+.pillars li{display:grid;grid-template-columns:56px 1fr;gap:18px;padding:26px 0;border-bottom:1px solid var(--line)}
+.pillars svg{width:46px;height:46px;color:var(--green)}
+.pillars b{display:block;font:700 20px/1.25 var(--display);letter-spacing:-.02em;margin-bottom:4px}
+.pillars span{color:var(--ink-2);font-size:15.5px}
+.figures{display:grid;grid-template-columns:repeat(2,1fr);margin-top:44px;border-top:1px solid var(--line)}
+.figures div{padding:24px 0}
+.figures b{display:block;font:700 48px/1 var(--display);letter-spacing:-.04em;margin-bottom:6px;color:var(--green)}
+.figures span{font-size:14.5px;color:var(--ink-2)}
+@media (max-width:900px){.value{grid-template-columns:1fr;gap:48px}}
+
+.card-img.swap{cursor:pointer;outline:none}
+.card-img.swap .in{opacity:0;transition:opacity .45s ease,transform .8s}
+.card-img.swap:hover .in,.card-img.swap:focus-visible .in,.card-img.swap.show .in{opacity:1}
+.swap-tag{position:absolute;top:12px;left:12px;z-index:2;font:600 11px var(--sans);letter-spacing:.1em;text-transform:uppercase;padding:5px 11px;border-radius:999px;background:var(--green);color:var(--on-green)}
+.swap-tag .a{display:none}
+.card-img.swap:hover .swap-tag,.card-img.swap.show .swap-tag,.card-img.swap:focus-visible .swap-tag{background:#fff;color:#111}
+.card-img.swap:hover .swap-tag .d,.card-img.swap.show .swap-tag .d,.card-img.swap:focus-visible .swap-tag .d{display:none}
+.card-img.swap:hover .swap-tag .a,.card-img.swap.show .swap-tag .a,.card-img.swap:focus-visible .swap-tag .a{display:inline}
+/* ANTES / DESPUES */
+.ad{background:var(--dark);color:var(--on-dark)}
+.ad .h2{color:#fff}
+.ad .lead{color:var(--on-dark-2)}
+.ad .eyebrow{color:#8FD184}
+.ad-grid{display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:clamp(340px,33vw,470px);gap:16px}
+.ad-card{position:relative;border-radius:8px;overflow:hidden;background:#222;cursor:pointer;outline:none}
+.ad-card.wide{grid-column:span 2}
+.ad-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .45s ease,transform .8s ease}
+.ad-card .antes{opacity:0}
+.ad-card:hover .antes,.ad-card:focus-visible .antes,.ad-card.show .antes{opacity:1}
+.ad-card:hover img,.ad-card.show img{transform:scale(1.03)}
+.ad-card::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.78) 0%,rgba(0,0,0,0) 45%);pointer-events:none}
+.ad-tag{position:absolute;top:14px;left:14px;z-index:2;font:600 11.5px var(--sans);letter-spacing:.1em;text-transform:uppercase;padding:6px 12px;border-radius:999px;background:var(--green);color:var(--on-green);transition:background .3s,color .3s}
+.ad-tag .a{display:none}
+.ad-card:hover .ad-tag,.ad-card:focus-visible .ad-tag,.ad-card.show .ad-tag{background:#fff;color:#111}
+.ad-card:hover .ad-tag .d,.ad-card:focus-visible .ad-tag .d,.ad-card.show .ad-tag .d{display:none}
+.ad-card:hover .ad-tag .a,.ad-card:focus-visible .ad-tag .a,.ad-card.show .ad-tag .a{display:inline}
+.ad-body{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:20px 20px 22px}
+.ad-body b{display:block;font:700 21px/1.15 var(--display);letter-spacing:-.02em;color:#fff}
+.ad-body span{font-size:13.5px;color:rgba(255,255,255,.75)}
+.ad-card.pend .ad-tag{background:#fff;color:#111}
+.ad-card.pend .soon{position:absolute;top:14px;right:14px;z-index:2;font:600 11.5px var(--sans);letter-spacing:.1em;text-transform:uppercase;padding:6px 12px;border-radius:999px;border:1px solid rgba(255,255,255,.5);color:#fff;background:rgba(0,0,0,.35)}
+.ad-hint{margin-top:22px;font-size:13.5px;color:var(--on-dark-2);display:flex;align-items:center;gap:8px}
+.ad-hint svg{width:16px;height:16px;color:#8FD184}
+@media (max-width:760px){.ad-grid{grid-template-columns:1fr;grid-auto-rows:auto}.ad-card.wide{grid-column:auto;aspect-ratio:3/2}.ad-card{aspect-ratio:4/5}}
+
+/* RUBROS */
+.rubros{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.rubro{position:relative;aspect-ratio:4/5;border-radius:6px;overflow:hidden;background:#111;color:#fff}
+.rubro img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .8s}
+.rubro:hover img{transform:scale(1.05)}
+.rubro::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.82) 0%,rgba(0,0,0,.05) 60%)}
+.rubro-body{position:absolute;left:0;right:0;bottom:0;padding:28px;z-index:1}
+.rubro-body h3{font:700 28px/1.1 var(--display);letter-spacing:-.03em;margin-bottom:6px;display:flex;align-items:center;gap:10px}
+.rubro-body h3::before{content:"";width:10px;height:10px;border-radius:50%;background:var(--green)}
+.rubro-body p{font-size:14.5px;color:rgba(255,255,255,.8)}
+@media (max-width:860px){.rubros{grid-template-columns:1fr}.rubro{aspect-ratio:16/10}}
+
+/* MODELO */
+.modelo{display:grid;grid-template-columns:repeat(4,1fr);border-top:3px solid var(--green)}
+.paso{padding:36px 28px 36px 0;border-right:1px solid var(--line);margin-right:28px}
+.paso:last-child{border-right:0;margin-right:0}
+.paso .n{font:700 15px var(--display);color:var(--green-2)}
+.paso svg{width:58px;height:58px;color:var(--ink);margin:24px 0 20px}
+.paso h3{font:700 23px/1.1 var(--display);letter-spacing:-.025em;margin-bottom:10px}
+.paso p{color:var(--ink-2);font-size:15px;margin-bottom:14px}
+.paso ul{list-style:none;font-size:14px;color:var(--ink-2)}
+.paso li{padding:6px 0;border-top:1px solid var(--line)}
+@media (max-width:1000px){.modelo{grid-template-columns:1fr 1fr}.paso:nth-child(2){border-right:0;margin-right:0}.paso:nth-child(-n+2){border-bottom:1px solid var(--line)}}
+@media (max-width:600px){.modelo{grid-template-columns:1fr}.paso{border-right:0;margin-right:0;padding-right:0;border-bottom:1px solid var(--line)}.paso:last-child{border-bottom:0}}
+
+/* CLIENTES */
+.clientes{background:var(--bg-2)}
+.sector{display:grid;grid-template-columns:260px 1fr;gap:40px;padding:30px 0;border-top:1px solid var(--line);align-items:center}
+.sector:last-child{border-bottom:1px solid var(--line)}
+.sector-h{display:flex;align-items:center;gap:14px}
+.sector-h svg{width:40px;height:40px;color:var(--green);flex:none}
+.sector-h b{font:700 19px/1.2 var(--display);letter-spacing:-.02em;display:block}
+.sector-h span{font-size:13px;color:var(--ink-3)}
+.marks{display:flex;flex-wrap:wrap;gap:10px}
+.mark{display:inline-flex;align-items:center;gap:10px;background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:11px 16px;font:600 15px/1.1 var(--display);letter-spacing:-.015em;color:var(--ink);text-decoration:none;min-height:48px;transition:border-color .2s}
+.mark small{font:500 12px var(--sans);color:var(--ink-3);letter-spacing:0}
+.mark.obra{border-color:var(--green);box-shadow:inset 0 0 0 1px var(--green)}
+.mark.obra::after{content:"Obra";font:600 10.5px var(--sans);letter-spacing:.1em;text-transform:uppercase;background:var(--green);color:var(--on-green);padding:4px 8px;border-radius:999px;margin-left:4px}
+a.mark:hover{border-color:var(--green-2)}
+.mark svg{width:26px;height:26px}
+@media (max-width:860px){.sector{grid-template-columns:1fr;gap:16px}}
+@media (max-width:520px){.mark{font-size:15px;padding:12px 14px;min-height:52px}}
+
+/* INMOBILIARIAS */
+.inmo{background:var(--forest);color:var(--on-dark)}
+.inmo .eyebrow{color:#8FD184}
+.inmo .h2{color:#fff}
+.inmo .lead{color:#B9C7B6;margin:20px 0 38px}
+.inmo-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start}
+.steps{list-style:none}
+.steps li{display:grid;grid-template-columns:48px 1fr;gap:16px;padding:20px 0;border-top:1px solid rgba(255,255,255,.14)}
+.steps li:last-child{border-bottom:1px solid rgba(255,255,255,.14)}
+.steps .n{font:700 28px/1 var(--display);color:var(--green)}
+.steps b{display:block;font:600 17px var(--display);color:#fff;margin-bottom:3px}
+.steps span{font-size:14.5px;color:#B9C7B6}
+.form{background:var(--bg);color:var(--ink);padding:40px 36px;border-radius:8px}
+.form h3{font:700 27px/1.1 var(--display);letter-spacing:-.03em;margin-bottom:6px}
+.form>p{font-size:14.5px;color:var(--ink-2);margin-bottom:24px}
+.seg{display:flex;border:2px solid var(--ink);border-radius:999px;margin-bottom:18px;padding:3px;gap:3px}
+.seg button{flex:1;font:600 13.5px var(--display);padding:10px 8px;border:0;background:transparent;color:var(--ink);border-radius:999px;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--green);color:var(--on-green)}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.f{margin-bottom:14px}
+.f label{display:block;font:600 12.5px var(--sans);color:var(--ink-2);margin-bottom:6px}
+.f input,.f select,.f textarea{width:100%;font:15px var(--sans);color:var(--ink);background:var(--bg-2);border:1px solid var(--line);border-radius:6px;padding:12px 13px;outline:none;transition:border-color .15s}
+.f input:focus,.f select:focus,.f textarea:focus{border-color:var(--green)}
+.f textarea{resize:vertical;min-height:84px}
+.form .pill{width:100%;justify-content:center;margin-top:6px}
+.alt{text-align:center;margin-top:14px;font-size:13.5px;color:var(--ink-3)}
+.alt a{color:var(--ink-2)}
+.err{font-size:13px;color:#C0392B;margin-top:10px;display:none}
+@media (max-width:960px){.inmo-grid{grid-template-columns:1fr;gap:48px}}
+@media (max-width:520px){.row{grid-template-columns:1fr;gap:0}.form{padding:28px 20px}}
+
+/* CONTACTO */
+.contacto{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+.contacto .h2{font-size:clamp(38px,5.4vw,70px);margin-bottom:22px}
+.datos{list-style:none;border-top:3px solid var(--green)}
+.datos li{display:grid;grid-template-columns:120px 1fr;gap:16px;padding:20px 0;border-bottom:1px solid var(--line);font:600 19px/1.35 var(--display);letter-spacing:-.01em}
+.datos li span{font:600 12.5px var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);padding-top:5px}
+.datos a{text-decoration:none}
+.datos a:hover{color:var(--green-2)}
+@media (max-width:900px){.contacto{grid-template-columns:1fr;gap:44px}.datos li{grid-template-columns:90px 1fr;font-size:17px}}
+
+/* FOOTER */
+footer{background:var(--dark);color:var(--on-dark);padding:80px 0 36px}
+.foot{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px;padding-bottom:56px;border-bottom:1px solid var(--dark-line)}
+footer .logo b{color:#fff}
+footer .logo small{color:var(--on-dark-2)}
+.foot p{color:var(--on-dark-2);font-size:14.5px;margin-top:20px;max-width:34ch}
+.foot h4{font:600 13px var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--on-dark-2);margin-bottom:16px}
+.foot ul{list-style:none}
+.foot li{padding:5px 0;font-size:15px}
+.foot a{text-decoration:none;color:var(--on-dark)}
+.foot a:hover{color:var(--green)}
+.legal{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-top:26px;font-size:13px;color:var(--on-dark-2)}
+@media (max-width:900px){.foot{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.foot{grid-template-columns:1fr}}
+
+/* FLOATING TAB */
+.side{position:fixed;right:0;top:50%;transform:translateY(-50%);z-index:70;background:var(--green);color:var(--on-green);text-decoration:none;display:flex;flex-direction:column;align-items:center;gap:10px;padding:16px 11px;border-radius:8px 0 0 8px;box-shadow:0 6px 20px rgba(0,0,0,.18)}
+.side svg{width:20px;height:20px}
+.side span{writing-mode:vertical-rl;transform:rotate(180deg);font:600 13px var(--display);letter-spacing:.04em}
+.side:hover{background:#74C267}
+@media (max-width:760px){.side{top:auto;bottom:18px;right:18px;transform:none;border-radius:999px;padding:15px}.side span{display:none}.side svg{width:24px;height:24px}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <filter id="rough" x="-5%" y="-5%" width="110%" height="110%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="7"/>
+    <feDisplacementMap in="SourceGraphic" scale="2"/>
+  </filter>
+</svg>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="inOffing Smart Spaces, inicio"><picture><source srcset="img/logo-light.png" media="(prefers-color-scheme: dark)"><img src="img/logo.png" alt="inOffing Smart Spaces" width="756" height="206"></picture></a>
+    <ul id="menu">
+      <li><a href="#nosotros">Nosotros</a></li>
+      <li><a href="#proyectos">Proyectos</a></li>
+      <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#inmobiliarias">Inmobiliarias</a></li>
+      <li><a href="#contacto" class="cta">Contacto</a></li>
+    </ul>
+    <button class="burger" id="burger" aria-label="Abrir menú" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero">
+  <img src="img/hero.jpg" alt="Recepción de Nitro Gym Castelar: mostrador de hormigón con listones de madera, cielorraso naranja y ladrillo visto" width="960" height="1280">
+  <div class="wrap">
+    <h1>Construimos espacios que hacen <span class="g">rendir</span> tu empresa.</h1>
+    <p>Oficinas, gimnasios y gastronomía. Diseño, obra y mobiliario a medida, llave en mano.</p>
+    <div class="ctas">
+      <a class="pill pill-light" href="#contacto">Hablemos</a>
+    </div>
+  </div>
+  <span class="hero-cap">Nitro Gym · Castelar</span>
+</section>
+
+
+
+
+<section class="sec" id="nosotros">
+  <div class="wrap value">
+    <div>
+      <span class="eyebrow">Nosotros</span>
+      <h2 class="h2">Del plano a la llave, con <span class="g">un solo equipo</span>.</h2>
+      <p class="lead" style="margin-top:22px">Desde 2010 diseñamos y construimos espacios de trabajo para empresas. Resolvemos proyecto, instalaciones, obra y mobiliario sin que tengas que coordinar estudios ni gremios por separado.</p>
+      <div class="figures">
+        <div><b>2010</b><span>diseñando y construyendo</span></div>
+        <div><b>50+</b><span>empresas e instituciones clientes</span></div>
+      </div>
+    </div>
+    <ul class="pillars">
+      <li>
+        <svg viewBox="0 0 48 48" aria-hidden="true"><circle class="sk" cx="24" cy="18" r="8"/><path class="sk" d="M10 41 C11 32 17 28.5 24 28.6 C31 28.5 37 32 38 41"/></svg>
+        <div><b>Un solo interlocutor</b><span>Una persona responsable desde el primer relevamiento hasta la postventa.</span></div>
+      </li>
+      <li>
+        <svg viewBox="0 0 48 48" aria-hidden="true"><path class="sk" d="M6 40 L42 39.6"/><path class="sk" d="M9 39.8 L9.3 16 L39 15.6 L39.2 39.6"/><path class="sk" d="M9.2 24 L39 23.8 M9.2 31.8 L39.1 31.6"/><path class="sk" d="M19 15.8 L19.2 24 M30 15.7 L30.1 23.9 M14 24 L14.2 31.8 M24 23.9 L24.1 31.7 M34 23.8 L34.2 31.6 M19 31.8 L19.2 39.7 M30 31.7 L30.1 39.6"/></svg>
+        <div><b>Equipo de obra propio</b><span>Mano de obra propia y gremios de confianza, con control de calidad en cada etapa.</span></div>
+      </li>
+      <li>
+        <svg viewBox="0 0 48 48" aria-hidden="true"><path class="sk" d="M8 38 L8.3 10"/><path class="sk" d="M8.2 38 L41 37.7"/><path class="sk" d="M13 31 L21 23.4 L28 28.6 L39 15.4"/><path class="sk" d="M33 15.2 L39.2 15.1 L39.4 21.4"/></svg>
+        <div><b>Plazos y presupuesto claros</b><span>Cotización detallada, cronograma de obra y seguimiento semanal del avance.</span></div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section class="sec" id="proyectos" style="background:var(--bg-2)">
+  <div class="wrap">
+    <div class="head"><div><span class="eyebrow">Proyectos</span><h2 class="h2">Obras destacadas</h2></div><p class="lead">Espacios entregados y en uso, del campus universitario a la planta corporativa.</p></div>
+
+    <article class="feat" id="pepperdine">
+      <div class="feat-media">
+        <figure><img src="img/pep-fachada.jpg" alt="Casona de la sede Pepperdine con fachada cubierta de vegetación y jardín" loading="lazy"></figure>
+        <figure><img src="img/pep-pileta.jpg" alt="Vista aérea del deck de madera, la pileta y los jardines de la sede Pepperdine" loading="lazy" style="object-position:50% 40%"></figure>
+        <figure><img src="img/pep-ventanal.jpg" alt="Ventanal en arco sobre deck de madera con enredaderas" loading="lazy"></figure>
+      </div>
+      <div class="feat-body">
+        <span class="num">01</span>
+        <h3>Pepperdine University</h3>
+        <span class="loc">Sede Buenos Aires · Educación</span>
+        <p>Intervención integral de la sede de la universidad en Buenos Aires: espacios exteriores de esparcimiento para estudiantes, con deck, pileta y jardines, y remodelación de aulas y oficinas de profesores.</p>
+        <ul class="scope"><li>Espacios exteriores</li><li>Decks de madera</li><li>Aulas</li><li>Oficinas de profesores</li><li>Baños</li></ul>
+      </div>
+    </article>
+
+    <article class="feat rev" id="satus">
+      <div class="feat-media">
+        <figure><img src="img/satus-sala.jpg" alt="Sala de capacitación con mesas en U y pantalla de proyección" loading="lazy"></figure>
+        <figure><img src="img/satus-recepcion.jpg" alt="Recepción de Satus Aguer con revestimiento de listones de madera, logo corpóreo y mostrador gris" loading="lazy"></figure>
+        <figure><img src="img/satus-tabiques.jpg" alt="Tabiques móviles plegados en la sala" loading="lazy"></figure>
+      </div>
+      <div class="feat-body">
+        <span class="num">02</span>
+        <h3>Satus Aguer</h3>
+        <span class="loc">Oficinas corporativas · Buenos Aires</span>
+        <p>Oficinas flexibles: tabiques móviles que convierten la planta en una gran sala de capacitación, sala de reuniones con mobiliario a medida, pintura de fachada y recambio total de iluminación.</p>
+        <ul class="scope"><li>Recepción</li><li>Tabiques móviles</li><li>Mobiliario a medida</li><li>Divisiones vidriadas</li><li>Iluminación</li><li>Fachada</li></ul>
+      </div>
+    </article>
+
+    <div class="more">
+      <article class="card">
+        <div class="card-img swap" tabindex="0"><img src="img/agrana.jpg" alt="Torre del edificio de las oficinas de Agrana en Vicente López" loading="lazy"><img class="in" src="img/agrana-interior.jpg" alt="Interior de las oficinas de Agrana con puestos de trabajo, tabiques y cielorraso técnico" loading="lazy"><span class="swap-tag"><span class="d">Exterior</span><span class="a">Interior</span></span></div>
+        <div class="card-body"><span class="rub">Oficinas · Llave en mano</span><h3>Agrana Argentina</h3><span class="loc">Vicente López · 350 m²</span><p>Oficinas cerradas, espacios operativos, salas de reunión y recepción, con mobiliario a medida. Entrega llave en mano.</p></div>
+      </article>
+      <article class="card">
+        <div class="card-img"><img src="img/dashi.jpg" alt="Barra de sushi de Dashi con vitrina refrigerada, banquetas tapizadas y luminarias colgantes" loading="lazy"></div>
+        <div class="card-body"><span class="rub">Gastronomía</span><h3>Dashi</h3><span class="loc">Buenos Aires · 2 plantas</span><p>Salón, privados en planta alta, baños, barra y fachada con cartelería y toldos para la cadena.</p></div>
+      </article>
+      <article class="card">
+        <div class="card-img"><img src="img/schueco.jpg" alt="Showroom de Schüco con exhibidores de aberturas, piso de madera y sector de atención" loading="lazy"></div>
+        <div class="card-body"><span class="rub">Showroom corporativo</span><h3>Schüco</h3><span class="loc">Buenos Aires</span><p>Showroom de sistemas de aberturas: exhibidores de carpinterías, piso de madera, iluminación embutida y sector de atención a clientes.</p></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+
+<section class="sec ad" id="nitro">
+  <div class="wrap">
+    <div class="head"><div><span class="eyebrow">Nitro Gym · Antes y después</span><h2 class="h2">De local vacío a gimnasio en marcha.</h2></div><p class="lead">Diseñamos y construimos las sedes de la cadena con un mismo estándar de marca.</p></div>
+    <div class="ad-grid">
+      <div class="ad-card wide" tabindex="0">
+        <img class="despues" src="img/ng-sala-despues.jpg" alt="Salón de Nitro Gym San Justo con luminarias hexagonales y pista de césped" loading="lazy">
+        <img class="antes" src="img/ng-sala-antes.jpg" alt="El mismo galpón vacío al inicio de la obra" loading="lazy">
+        <span class="ad-tag"><span class="d">Después</span><span class="a">Antes</span></span>
+        <div class="ad-body"><b>San Justo</b><span>Terminada · De galpón a sala de entrenamiento</span></div>
+      </div>
+      <div class="ad-card" tabindex="0">
+        <img class="despues" src="img/ng-recep-despues.jpg" alt="Recepción de Nitro Gym Moreno terminada, con mostrador de mármol negro y luminarias cuadradas" loading="lazy">
+        <img class="antes" src="img/ng-recep-antes.jpg" alt="La misma recepción durante la obra, con el mostrador en placa de yeso" loading="lazy">
+        <span class="ad-tag"><span class="d">Después</span><span class="a">Antes</span></span>
+        <div class="ad-body"><b>Moreno</b><span>Terminada · Recepción y mostrador</span></div>
+      </div>
+      <div class="ad-card" tabindex="0">
+        <img class="despues" src="img/ng-entrepiso-despues.jpg" alt="Sala de Nitro Gym Castelar con entrepiso, ladrillo visto y luminarias lineales" loading="lazy">
+        <img class="antes" src="img/ng-entrepiso-antes.jpg" alt="La misma sala en obra, con andamios y estructura a la vista" loading="lazy">
+        <span class="ad-tag"><span class="d">Después</span><span class="a">Antes</span></span>
+        <div class="ad-body"><b>Castelar</b><span>Terminada · Entrepiso, ladrillo visto e iluminación</span></div>
+      </div>
+      <div class="ad-card pend wide" tabindex="0" id="ad-ballester">
+        <!-- Cuando esté la foto terminada: agregar <img class="despues" src="img/ng-ballester-despues.jpg" ...>, cambiar la clase de la foto de abajo a "antes" y quitar "pend" -->
+        <img class="despues" src="img/ng-ballester-antes.jpg" alt="Frente del galpón de Ballester antes de la obra" loading="lazy">
+        <span class="ad-tag">Antes</span>
+        <span class="soon">En obra</span>
+        <div class="ad-body"><b>Ballester</b><span>En obra · Próximamente el después</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="rubros">
+  <div class="wrap">
+    <div class="head"><div><span class="eyebrow">Rubros</span><h2 class="h2">Espacios productivos</h2></div><p class="lead">Cada rubro tiene su lógica de uso, instalaciones e imagen. Diseñamos a partir de cómo funciona tu negocio.</p></div>
+    <div class="rubros">
+      <article class="rubro"><img src="img/nitro-sala.jpg" alt="Sala de entrenamiento de Nitro Gym" loading="lazy"><div class="rubro-body"><h3>Gimnasios</h3><p>Salas de entrenamiento, recepción, vestuarios y tienda.</p></div></article>
+      <article class="rubro"><img src="img/oficinas.jpg" alt="Oficina de dirección con escritorio de madera, sillones de cuero y muebles a medida" loading="lazy"><div class="rubro-body"><h3>Oficinas</h3><p>Plantas corporativas, salas de reunión, recepciones y puestos operativos.</p></div></article>
+      <article class="rubro"><img src="img/gastronomia.jpg" alt="Salón de restaurante con mesas, cava vidriada de vinos y cocina a la vista" loading="lazy"><div class="rubro-body"><h3>Gastronomía</h3><p>Salones, barras, privados y fachadas.</p></div></article>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="servicios" style="padding-top:0">
+  <div class="wrap">
+    <div class="head"><div><span class="eyebrow">Servicios</span><h2 class="h2">Cómo trabajamos</h2></div><p class="lead">Cuatro etapas con un mismo responsable. Podés contratar el proceso completo o la etapa que necesites.</p></div>
+    <div class="modelo">
+      <div class="paso"><span class="n">01</span>
+        <svg viewBox="0 0 64 64" aria-hidden="true"><circle class="sk" cx="27" cy="27" r="15"/><path class="sk" d="M38 38.4 L53 53.2"/></svg>
+        <h3>Relevamiento</h3><p>Entendemos cómo trabaja tu equipo y qué necesita el espacio.</p>
+        <ul><li>Visita y medición del inmueble</li><li>Programa de necesidades</li><li>Estimación inicial</li></ul></div>
+      <div class="paso"><span class="n">02</span>
+        <svg viewBox="0 0 64 64" aria-hidden="true"><path class="sk" d="M8 50 L8.4 14 L44 13.6"/><path class="sk" d="M8.2 30 L26 30.3 L26.2 50"/><path class="sk" d="M14 50.2 L56 49.8"/><path class="sk" d="M40 40 L54.5 25.2 L58.4 29 L43.8 43.6 L38.6 45.2 Z"/></svg>
+        <h3>Diseño</h3><p>Proyecto a medida de tu operación y tu marca.</p>
+        <ul><li>Optimización de la superficie</li><li>Imagen corporativa</li><li>Renders y documentación</li></ul></div>
+      <div class="paso"><span class="n">03</span>
+        <svg viewBox="0 0 64 64" aria-hidden="true"><path class="sk" d="M6 52 L58 51.6"/><path class="sk" d="M10 51.8 L10.3 20 L54 19.6 L54.2 51.6"/><path class="sk" d="M10.2 30.6 L54 30.3 M10.2 41 L54.1 40.8"/><path class="sk" d="M24 20 L24.2 30.4 M40 19.8 L40.1 30.3 M17 30.5 L17.2 41 M32 30.4 L32.1 40.9 M47 30.3 L47.2 40.8 M24 41 L24.2 51.7 M40 40.9 L40.1 51.6"/></svg>
+        <h3>Construcción</h3><p>Obra con equipo propio y seguimiento semanal.</p>
+        <ul><li>Instalaciones electromecánicas</li><li>Construcción en seco</li><li>Revestimientos y mobiliario a medida</li></ul></div>
+      <div class="paso"><span class="n">04</span>
+        <svg viewBox="0 0 64 64" aria-hidden="true"><circle class="sk" cx="20" cy="32" r="11"/><circle class="sk" cx="20" cy="32" r="3.5"/><path class="sk" d="M31 32.2 L57 31.8 L57.2 39"/><path class="sk" d="M48 32 L48.1 38 M41 32.1 L41.2 36.4"/></svg>
+        <h3>Llave en mano</h3><p>Entregamos el espacio listo para operar.</p>
+        <ul><li>Entrega lista para usar</li><li>Obra nueva o remodelación</li><li>Servicio de postventa</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec clientes" id="clientes">
+  <div class="wrap">
+    <div class="head"><div><span class="eyebrow">Clientes</span><h2 class="h2">Empresas que confían en nosotros</h2></div><p class="lead">Más de 50 empresas e instituciones, por rubro. Las marcadas con <b style="color:var(--green-2)">Obra</b> están en este sitio.</p></div>
+    <div class="sectors">
+      <div class="sector">
+        <div class="sector-h"><svg viewBox="0 0 48 48" aria-hidden="true"><path class="sk" d="M6 24 L42 23.8"/><path class="sk" d="M10 16 L10.2 32 M15 13 L15.1 35 M38 16 L38.2 32 M33 13 L33.1 35"/></svg><div><b>Gimnasios</b><span>Cadenas de fitness</span></div></div>
+        <div class="marks">
+          <a class="mark obra" href="#nitro">Nitro Gym</a>
+        </div>
+      </div>
+      <div class="sector">
+        <div class="sector-h"><svg viewBox="0 0 48 48" aria-hidden="true"><path class="sk" d="M8 40 L8.3 10 L28 9.8 L28.2 40"/><path class="sk" d="M28 20 L40 19.8 L40.2 40"/><path class="sk" d="M5 40.2 L43 40"/><path class="sk" d="M14 16 L14.1 18 M21 16 L21.1 18 M14 24 L14.1 26 M21 24 L21.1 26 M14 32 L14.1 34 M21 32 L21.1 34"/></svg><div><b>Oficinas corporativas</b><span>Industria y servicios</span></div></div>
+        <div class="marks">
+          <a class="mark obra" href="#satus">Satus Aguer</a>
+          <span class="mark obra">Agrana</span>
+          <a class="mark obra" href="#proyectos">Schüco</a>
+          <span class="mark"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3.848C5.223 3.848 0 7.298 0 12c0 4.702 5.224 8.152 12 8.152S24 16.702 24 12c0-4.702-5.223-8.152-12-8.152zm7.334 3.839c0 1.08-1.725 1.913-4.488 2.246-.26-2.58-1.005-4.279-1.963-4.913 2.948.184 6.45 1.227 6.45 2.667zM12 16.401c-.96 0-1.746-1.5-1.808-4.389.577.047 1.18.072 1.808.072.628 0 1.23-.025 1.807-.072-.061 2.89-.847 4.389-1.807 4.389zm0-6.308c-.59 0-1.155-.019-1.69-.054.261-1.728.92-3.15 1.69-3.15.77 0 1.428 1.422 1.689 3.15-.535.034-1.099.054-1.689.054zm-.882-5.075c-.956.633-1.706 2.333-1.964 4.915C6.391 9.6 4.665 8.767 4.665 7.687c0-1.44 3.504-2.49 6.453-2.669zM2.037 11.68a5.265 5.265 0 011.048-3.164c.27 1.547 2.522 2.881 5.972 3.37V12c0 3.772.879 6.203 2.087 6.97-5.107-.321-9.107-3.48-9.107-7.29zm10.823 7.29c1.207-.767 2.087-3.198 2.087-6.97v-.115c3.447-.488 5.704-1.826 5.972-3.37a5.26 5.26 0 011.049 3.165c-.004 3.81-4.008 6.969-9.109 7.29z"/></svg>Toyota</span>
+          <span class="mark">Daewoo</span>
+          <span class="mark">PDVSA</span>
+          <span class="mark">Genexion</span>
+          <span class="mark">Amcor British Plastic</span>
+          <span class="mark">Astillero Tandanor</span>
+          <span class="mark">Cimet S.A.</span>
+          <span class="mark">Novaspuma</span>
+          <span class="mark">Sommier Center</span>
+          <span class="mark">Positive</span>
+          <span class="mark">Vox &amp; Son</span>
+          <span class="mark">Synergy</span>
+          <span class="mark">Helport</span>
+          <span class="mark">Acción Point</span>
+          <span class="mark">AC Argentina</span>
+          <span class="mark">Automación Argentina</span>
+          <span class="mark">Tecknobombas</span>
+          <span class="mark">Nutrisur</span>
+          <span class="mark">Buco</span>
+          <span class="mark">CA Group</span>
+          <span class="mark">Batimat</span>
+        </div>
+      </div>
+      <div class="sector">
+        <div class="sector-h"><svg viewBox="0 0 48 48" aria-hidden="true"><path class="sk" d="M8 22 C8 30 14 36 24 36 C34 36 40 30 40 22 L8 22.2"/><path class="sk" d="M16 40 L32 39.8"/><path class="sk" d="M18 16 C17 13 19 11 18 8 M26 16 C25 13 27 11 26 8"/></svg><div><b>Gastronomía</b><span>Cadenas y restaurantes</span></div></div>
+        <div class="marks">
+          <a class="mark obra" href="#proyectos">Dashi</a>
+          <span class="mark">Te Mataré Ramírez</span>
+        </div>
+      </div>
+      <div class="sector">
+        <div class="sector-h"><svg viewBox="0 0 48 48" aria-hidden="true"><path class="sk" d="M19 8 L19.2 20 L9 38 C8 40 9 41.5 11 41.5 L37 41.4 C39 41.5 40 40 39 38 L29 20 L29.1 8"/><path class="sk" d="M16 8 L32 7.9"/><path class="sk" d="M13.5 31 L34.5 30.8"/></svg><div><b>Laboratorios</b><span>Industria farmacéutica</span></div></div>
+        <div class="marks">
+          <span class="mark">Laboratorio Synthon</span>
+          <span class="mark">Laboratorio Millanel</span>
+          <span class="mark">Laboratorio Aerofarma</span>
+          <span class="mark">Laboratorio Driburg</span>
+          <span class="mark">Laboratorio Temblist</span>
+          <span class="mark">Laboratorio Vabriola</span>
+          <span class="mark">Laboratorio Reckitt Benckiser</span>
+          <span class="mark">Laboratorio ISSUE</span>
+          <span class="mark">P.G.I.</span>
+        </div>
+      </div>
+      <div class="sector">
+        <div class="sector-h"><svg viewBox="0 0 48 48" aria-hidden="true"><path class="sk" d="M8 40 L8.2 20 L24 9 L40 19.8 L40.2 40"/><path class="sk" d="M5 40.2 L43 40"/><path class="sk" d="M19 40 L19.1 28 L29 27.9 L29.1 40"/></svg><div><b>Estudios, inmobiliarias y desarrollos</b><span>Arquitectura y real estate</span></div></div>
+        <div class="marks">
+          <span class="mark">Estudio ELES</span>
+          <span class="mark">Estudio Farisgroup</span>
+          <span class="mark">Arq. Pablo Grimban</span>
+          <span class="mark">Lepore Propiedades</span>
+          <span class="mark">Baires Inmobiliaria</span>
+          <span class="mark">Nordelta</span>
+          <span class="mark">Oficinas SOHO</span>
+          <span class="mark">Oficinas Boca Raton</span>
+        </div>
+      </div>
+      <div class="sector">
+        <div class="sector-h"><svg viewBox="0 0 48 48" aria-hidden="true"><path class="sk" d="M6 18 L24 8 L42 17.8"/><path class="sk" d="M8 18.2 L40 18"/><path class="sk" d="M12 22 L12.1 36 M20 22 L20.1 36 M28 22 L28.1 36 M36 22 L36.1 36"/><path class="sk" d="M6 40 L42 39.8"/></svg><div><b>Educación e instituciones</b><span>Universidades y sector público</span></div></div>
+        <div class="marks">
+          <a class="mark obra" href="#pepperdine">Pepperdine University</a>
+          <span class="mark">Facultad de Medicina <small>UBA</small></span>
+          <span class="mark">Gobierno de la Ciudad <small>de Buenos Aires</small></span>
+          <span class="mark">Municipalidad de San Isidro</span>
+          <span class="mark">Municipalidad de Luján</span>
+          <span class="mark">Municipalidad de Laboulaye</span>
+          <span class="mark">SMATA</span>
+          <span class="mark">CEMASDE</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec inmo" id="inmobiliarias">
+  <div class="wrap inmo-grid">
+    <div>
+      <span class="eyebrow">Para inmobiliarias</span>
+      <h2 class="h2">Tu cliente alquila el local. Nosotros lo dejamos funcionando.</h2>
+      <p class="lead">Si tu cliente evalúa una oficina, un local o una planta, lo ayudamos a decidir: relevamos el inmueble, estimamos la adecuación y, si avanza, lo entregamos listo para operar.</p>
+      <ol class="steps">
+        <li><span class="n">1</span><div><b>Nos derivás el contacto</b><span>Desde el formulario o por WhatsApp, con el inmueble y el uso que busca.</span></div></li>
+        <li><span class="n">2</span><div><b>Relevamos y estimamos</b><span>Visitamos el inmueble y le damos al cliente costo y plazos de adecuación.</span></div></li>
+        <li><span class="n">3</span><div><b>Seguimiento compartido</b><span>Te mantenemos al tanto del avance para acompañar la operación.</span></div></li>
+      </ol>
+    </div>
+    <form class="form" id="inmoForm" novalidate>
+      <h3>Derivar un cliente</h3>
+      <p>Se abre WhatsApp con los datos cargados.</p>
+      <div class="seg" role="group" aria-label="Tipo de operación">
+        <button type="button" data-v="Alquiler" aria-pressed="true">Alquiler</button>
+        <button type="button" data-v="Venta" aria-pressed="false">Venta</button>
+        <button type="button" data-v="Ya firmado" aria-pressed="false">Ya firmado</button>
+      </div>
+      <div class="row">
+        <div class="f"><label for="i-nombre">Tu nombre</label><input id="i-nombre" autocomplete="name"></div>
+        <div class="f"><label for="i-inmo">Inmobiliaria</label><input id="i-inmo" autocomplete="organization"></div>
+      </div>
+      <div class="row">
+        <div class="f"><label for="i-tel">Teléfono</label><input id="i-tel" type="tel" autocomplete="tel"></div>
+        <div class="f"><label for="i-uso">Uso previsto</label><select id="i-uso"><option>Oficinas</option><option>Gimnasio</option><option>Gastronomía</option><option>Local comercial</option><option>Otro</option></select></div>
+      </div>
+      <div class="row">
+        <div class="f"><label for="i-zona">Zona del inmueble</label><input id="i-zona" placeholder="Ej: San Isidro"></div>
+        <div class="f"><label for="i-m2">Superficie aprox.</label><input id="i-m2" placeholder="Ej: 250 m²"></div>
+      </div>
+      <div class="f"><label for="i-msg">Comentarios</label><textarea id="i-msg" placeholder="Estado del inmueble, plazos, lo que necesite el cliente"></textarea></div>
+      <button class="pill pill-green" type="submit">Enviar por WhatsApp</button>
+      <p class="err" id="i-err">Completá tu nombre y teléfono para enviar.</p>
+      <div class="alt">o por mail a <a id="i-mail" href="mailto:arq@hafestudio.com.ar">arq@hafestudio.com.ar</a></div>
+    </form>
+  </div>
+</section>
+
+<section class="sec" id="contacto">
+  <div class="wrap contacto">
+    <div>
+      <span class="eyebrow">Contacto</span>
+      <h2 class="h2">Hablemos de tu <span class="g">proyecto</span>.</h2>
+      <p class="lead" style="margin-bottom:34px">Contanos qué necesitás y coordinamos una visita. Trabajamos en AMBA y en el interior del país.</p>
+      <div class="ctas">
+        <a class="pill pill-green" href="https://wa.me/5491159377885?text=Hola%2C%20quiero%20consultar%20por%20un%20proyecto%20con%20inOffing." target="_blank" rel="noopener">Escribir por WhatsApp</a>
+        <a class="pill pill-dark" href="mailto:arq@hafestudio.com.ar?subject=Consulta%20inOffing">Enviar un mail</a>
+      </div>
+    </div>
+    <ul class="datos">
+      <li><span>Teléfono</span><a href="tel:+5491159377885">11 5937 7885</a></li>
+      <li><span>Email</span><a href="mailto:arq@hafestudio.com.ar">arq@hafestudio.com.ar</a></li>
+      <li><span>Estudio</span><div>Don Bosco 195<br>San Isidro, Buenos Aires</div></li>
+    </ul>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <a class="logo" href="#top" aria-label="inOffing Smart Spaces, inicio"><img src="img/logo-light.png" alt="inOffing Smart Spaces" width="756" height="206"></a>
+        <p>Diseño y construcción de espacios productivos para empresas, desde 2010.</p>
+      </div>
+      <div><h4>Empresa</h4><ul><li><a href="#nosotros">Nosotros</a></li><li><a href="#proyectos">Proyectos</a></li><li><a href="#servicios">Servicios</a></li><li><a href="#inmobiliarias">Inmobiliarias</a></li></ul></div>
+      <div><h4>Rubros</h4><ul><li><a href="#rubros">Gimnasios</a></li><li><a href="#rubros">Oficinas</a></li><li><a href="#rubros">Gastronomía</a></li></ul></div>
+      <div><h4>Contacto</h4><ul><li><a href="tel:+5491159377885">11 5937 7885</a></li><li><a href="mailto:arq@hafestudio.com.ar">arq@hafestudio.com.ar</a></li><li>Don Bosco 195, San Isidro</li></ul></div>
+    </div>
+    <div class="legal"><span>© inOffing Smart Spaces</span><span>San Isidro · Buenos Aires · Argentina</span></div>
+  </div>
+</footer>
+
+<a class="side" href="https://wa.me/5491159377885?text=Hola%2C%20quiero%20consultar%20por%20un%20proyecto%20con%20inOffing." target="_blank" rel="noopener" aria-label="Contacto por WhatsApp">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H9l-5 4z"/></svg>
+  <span>Contacto</span>
+</a>
+
+<script>
+(function(){
+  document.querySelectorAll('.ad-card:not(.pend),.card-img.swap').forEach(function(c){c.addEventListener('click',function(){if(window.matchMedia('(hover: none)').matches)c.classList.toggle('show')})});
+  var b=document.getElementById('burger'),m=document.getElementById('menu');
+  b.addEventListener('click',function(){var o=m.classList.toggle('open');b.setAttribute('aria-expanded',o)});
+  m.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){m.classList.remove('open');b.setAttribute('aria-expanded','false')})});
+
+  var f=document.getElementById('inmoForm'),op='Alquiler';
+  f.querySelectorAll('.seg button').forEach(function(x){x.addEventListener('click',function(){
+    f.querySelectorAll('.seg button').forEach(function(y){y.setAttribute('aria-pressed','false')});
+    x.setAttribute('aria-pressed','true');op=x.dataset.v;})});
+  function v(id){return document.getElementById(id).value.trim()}
+  function msg(){
+    var l=['Hola inOffing, les derivo un cliente.','','Agente: '+v('i-nombre')+(v('i-inmo')?' ('+v('i-inmo')+')':''),'Teléfono: '+v('i-tel'),'Operación: '+op,'Uso previsto: '+v('i-uso')];
+    if(v('i-zona'))l.push('Zona: '+v('i-zona'));
+    if(v('i-m2'))l.push('Superficie: '+v('i-m2'));
+    if(v('i-msg'))l.push('','Comentarios: '+v('i-msg'));
+    return l.join('\n');
+  }
+  f.addEventListener('input',function(){document.getElementById('i-mail').href='mailto:arq@hafestudio.com.ar?subject='+encodeURIComponent('Derivación de cliente — inmobiliaria')+'&body='+encodeURIComponent(msg())});
+  f.addEventListener('submit',function(e){
+    e.preventDefault();var err=document.getElementById('i-err');
+    if(!v('i-nombre')||!v('i-tel')){err.style.display='block';return}
+    err.style.display='none';window.open('https://wa.me/5491159377885?text='+encodeURIComponent(msg()),'_blank','noopener');
+  });
+})();
+</script>
+</body>
+</html>
