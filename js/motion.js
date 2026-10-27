@@ -35,13 +35,13 @@
   var intro=document.querySelector('[data-intro]');
   var heroDelay=120;
   if(h.classList.contains('m-intro')&&intro){
-    heroDelay=1500;
+    heroDelay=2250;
     raf(function(){intro.classList.add('go')});
     var endIntro=function(){
       intro.classList.add('out');
       setTimeout(function(){h.classList.remove('m-intro')},700);
     };
-    var t=setTimeout(endIntro,1000);
+    var t=setTimeout(endIntro,1750);
     intro.addEventListener('click',function(){clearTimeout(t);endIntro()});
   }else{
     h.classList.remove('m-intro');
