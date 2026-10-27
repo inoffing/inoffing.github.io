@@ -364,9 +364,7 @@ footer .logo small{color:var(--on-dark-2)}
 
 .m .intro{position:fixed;inset:0;z-index:200;background:var(--dark);display:none;align-items:center;justify-content:center;cursor:pointer;transition:transform .7s cubic-bezier(.7,0,.2,1)}
 .m.m-intro .intro{display:flex}
-.intro-in{display:flex;flex-direction:column;align-items:center;gap:26px}
-.intro-in img:first-child{width:84px;height:84px;opacity:0;transform:translateY(-40px) scale(.9);transition:opacity .5s,transform .7s cubic-bezier(.2,.8,.2,1)}
-.intro-in img:last-child{width:min(280px,64vw);height:auto;opacity:0;transform:translateY(-20px);transition:opacity .5s .3s,transform .6s .3s cubic-bezier(.2,.8,.2,1)}
+.intro-in img{width:min(340px,72vw);height:auto;opacity:0;transform:translateY(-28px);transition:opacity .55s,transform .75s cubic-bezier(.2,.8,.2,1)}
 .intro.go .intro-in img{opacity:1;transform:none}
 .intro.out{transform:translateY(-100%)}
 .m.m-intro body{overflow:hidden}
@@ -393,7 +391,7 @@ footer .logo small{color:var(--on-dark-2)}
 </style>
 </head>
 <body>
-<div class="intro" data-intro aria-hidden="true"><div class="intro-in"><img src="img/favicon.png" alt="" width="192" height="192"><img src="img/logo-light.png" alt="" width="756" height="206"></div></div>
+<div class="intro" data-intro aria-hidden="true"><div class="intro-in"><img src="img/logo-light.png" alt="" width="756" height="206"></div></div>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <filter id="rough" x="-5%" y="-5%" width="110%" height="110%">
     <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="7"/>

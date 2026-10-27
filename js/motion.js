@@ -41,7 +41,7 @@
       intro.classList.add('out');
       setTimeout(function(){h.classList.remove('m-intro')},700);
     };
-    var t=setTimeout(endIntro,1050);
+    var t=setTimeout(endIntro,1000);
     intro.addEventListener('click',function(){clearTimeout(t);endIntro()});
   }else{
     h.classList.remove('m-intro');
