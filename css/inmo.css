@@ -82,3 +82,66 @@
 .m.hero-go .ip-hero-img>img{transform:none}
 .m .ficha{opacity:0;transform:translateY(-16px);transition:opacity .7s .9s,transform .9s .9s cubic-bezier(.16,1,.3,1)}
 .m.hero-go .ficha{opacity:1;transform:none}
+
+/* Badge de lanzamiento en la portada */
+.ip-promo{align-self:flex-start;display:inline-flex;align-items:center;gap:12px;padding:6px 16px 6px 6px;margin:-6px 0 30px;border-radius:999px;border:1px solid rgba(143,209,132,.45);background:rgba(143,209,132,.1);color:#fff;text-decoration:none;font:600 14px/1.3 var(--display);transition:background .2s}
+.ip-promo:hover{background:rgba(143,209,132,.2)}
+.ip-promo b{flex:none;background:var(--green);color:var(--on-green);border-radius:999px;padding:6px 12px;font:600 11px/1 var(--sans);letter-spacing:.1em;text-transform:uppercase}
+
+/* Franja de clientes */
+.ip-clientes{background:var(--bg-2);border-bottom:1px solid var(--line);padding:22px 0}
+.ip-clientes .wrap{display:flex;align-items:baseline;gap:24px}
+.ip-clientes .wrap>span{flex:none;font:600 11.5px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--green-2)}
+.ip-clientes ul{list-style:none;display:flex;flex-wrap:wrap;gap:6px 0;font:600 15px/1.4 var(--display);color:var(--ink-2)}
+.ip-clientes li:not(:last-child)::after{content:"·";margin:0 12px;color:var(--ink-3)}
+@media (max-width:760px){.ip-clientes .wrap{flex-direction:column;gap:12px}.ip-clientes ul{font-size:14px}}
+
+/* Comisión: lo más llamativo después de la portada */
+.ip-ganas{background:var(--dark);color:var(--on-dark)}
+.ip-ganas .kick{color:var(--leaf)}
+.ip-ganas .h2{color:#fff}
+.ip-ganas-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:72px;align-items:center;margin-top:40px}
+.ip-pct-tag{display:inline-block;background:var(--green);color:var(--on-green);border-radius:999px;padding:7px 14px;font:600 12px/1 var(--sans);letter-spacing:.12em;text-transform:uppercase}
+.ip-pct strong{display:block;font:400 clamp(150px,22vw,300px)/.82 var(--serif);letter-spacing:-.06em;color:var(--leaf);margin:18px 0 22px}
+.ip-pct p{color:var(--on-dark-2);font-size:16.5px;max-width:42ch}
+.ip-pct .ip-pct-after{margin-top:22px;padding-top:20px;border-top:1px solid var(--dark-line);font-size:16px}
+.ip-pct-after b{font:500 26px/1.1 var(--serif);color:#fff;margin-right:6px}
+.ip-ganas-list{list-style:none;border-top:1px solid var(--dark-line)}
+.ip-ganas-list li{display:grid;grid-template-columns:30px 1fr;gap:14px;padding:22px 0;border-bottom:1px solid var(--dark-line)}
+.ip-ganas-list svg{width:22px;height:22px;color:var(--leaf);margin-top:2px}
+.ip-ganas-list b{display:block;font:600 18px/1.3 var(--display);color:#fff;margin-bottom:4px}
+.ip-ganas-list span{color:var(--on-dark-2);font-size:15px}
+.ip-ganas-list .ip-ganas-cta{display:block;border-bottom:0;padding-top:28px}
+@media (max-width:900px){.ip-ganas-grid{grid-template-columns:1fr;gap:36px}.ip-pct strong{margin:14px 0 18px}}
+
+/* Datos opcionales del cliente en el formulario */
+.ip-opt{border:1px dashed var(--line);border-radius:6px;padding:14px 14px 0;margin-bottom:14px}
+.ip-opt>p{font:600 12.5px var(--sans);color:var(--green-2);margin-bottom:10px}
+
+/* Obras sin antes/después */
+.ad-card.ad-solo{cursor:default}
+
+/* Puesta en valor */
+.ip-valor-box{display:grid;grid-template-columns:1fr auto;gap:48px;align-items:center;background:var(--green-3);border-radius:8px;padding:52px 56px}
+.ip-valor-box .h2{font-size:clamp(30px,3.6vw,46px);margin-bottom:14px}
+.ip-valor-box .lead{color:var(--ink-2)}
+@media (max-width:860px){.ip-valor-box{grid-template-columns:1fr;gap:28px;padding:34px 22px}.ip-valor-box .pill{justify-self:start}}
+
+/* Preguntas frecuentes */
+.ip-faq-list{margin-top:40px;border-top:1px solid var(--line);max-width:860px}
+.ip-faq-list details{border-bottom:1px solid var(--line)}
+.ip-faq-list summary{list-style:none;cursor:pointer;position:relative;padding:22px 48px 22px 0;font:600 18px/1.35 var(--display);letter-spacing:-.01em}
+.ip-faq-list summary::-webkit-details-marker{display:none}
+.ip-faq-list summary::after{content:"";position:absolute;right:6px;top:50%;width:14px;height:14px;margin-top:-7px;background:linear-gradient(var(--green-2),var(--green-2)) center/14px 2px no-repeat,linear-gradient(var(--green-2),var(--green-2)) center/2px 14px no-repeat;transition:transform .25s}
+.ip-faq-list details[open] summary::after{transform:rotate(45deg)}
+.ip-faq-list summary:focus-visible{outline:2px solid var(--green);outline-offset:4px}
+.ip-faq-list details p{padding:0 48px 24px 0;color:var(--ink-2);max-width:70ch}
+@media (max-width:600px){.ip-faq-list summary{font-size:16.5px}}
+
+/* WhatsApp flotante: solo en pantallas de 768px o menos, y se corre cuando está el formulario */
+.ip .side{display:none}
+@media (max-width:768px){
+  .ip .side{display:flex;top:auto;bottom:18px;right:18px;transform:none;border-radius:999px;padding:14px;transition:opacity .25s,transform .25s}
+  .ip .side svg{width:28px;height:28px}
+  .ip .side.fab-off{opacity:0;transform:translateY(20px);pointer-events:none}
+}

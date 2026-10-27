@@ -18,11 +18,14 @@
   f.querySelectorAll('.seg button').forEach(function(x){x.addEventListener('click',function(){
     f.querySelectorAll('.seg button').forEach(function(y){y.setAttribute('aria-pressed','false')});
     x.setAttribute('aria-pressed','true');op=x.dataset.v;})});
-  function v(id){return document.getElementById(id).value.trim()}
+  function v(id){var e=document.getElementById(id);return e?e.value.trim():''}
   function msg(){
     var l=['Hola inOffing, les derivo un cliente.','','Agente: '+v('i-nombre')+(v('i-inmo')?' ('+v('i-inmo')+')':''),'Teléfono: '+v('i-tel'),'Operación: '+op,'Uso previsto: '+v('i-uso')];
     if(v('i-zona'))l.push('Zona: '+v('i-zona'));
     if(v('i-m2'))l.push('Superficie: '+v('i-m2'));
+    // Datos opcionales del cliente (solo existen en la página de inmobiliarias)
+    if(v('i-cnombre'))l.push('Cliente: '+v('i-cnombre'));
+    if(v('i-ctel'))l.push('Teléfono del cliente: '+v('i-ctel'));
     if(v('i-msg'))l.push('','Comentarios: '+v('i-msg'));
     return l.join('\n');
   }
@@ -31,5 +34,12 @@
     e.preventDefault();var err=document.getElementById('i-err');
     if(!v('i-nombre')||!v('i-tel')){err.style.display='block';return}
     err.style.display='none';window.open('https://wa.me/5491159377885?text='+encodeURIComponent(msg()),'_blank','noopener');
+  });
+
+  // Botón flotante que se corre para no tapar el formulario
+  document.querySelectorAll('[data-fab-avoid]').forEach(function(fab){
+    var t=document.getElementById(fab.getAttribute('data-fab-avoid'));
+    if(!t||!('IntersectionObserver' in window))return;
+    new IntersectionObserver(function(es){fab.classList.toggle('fab-off',es[0].isIntersecting)}).observe(t);
   });
 })();
