@@ -352,8 +352,6 @@ footer .logo small{color:var(--on-dark-2)}
 
 /* MOVIMIENTO (solo con JS y sin "reducir movimiento"; todo entra de arriba hacia abajo) */
 .intro{display:none}
-.hero-glow{position:absolute;inset:0;z-index:1;pointer-events:none;opacity:0;transition:opacity .6s;background:radial-gradient(520px circle at var(--mx,70%) var(--my,40%),rgba(99,179,86,.22),transparent 60%)}
-.hero:hover .hero-glow{opacity:1}
 .hero .wrap{z-index:2}
 .nav{transition:transform .35s ease}
 .nav.nav-hide{transform:translateY(-100%)}
@@ -389,7 +387,17 @@ footer .logo small{color:var(--on-dark-2)}
 .m [data-progress] .paso:not(.on) .n{color:var(--ink-3)}
 .magnetic{will-change:transform}
 .m .magnetic{transition:transform .25s cubic-bezier(.2,.8,.2,1),background .2s,color .2s,border-color .2s}
-@media (prefers-reduced-motion:reduce){.nav{transition:none}.hero-glow{display:none}}
+/* Fotos: se descubren de arriba hacia abajo y se acomodan con un zoom suave */
+.m .card-img::before,.m .feat-media figure::before,.m .ad-card::before,.m .rubro::before{content:"";position:absolute;inset:0;z-index:3;pointer-events:none;background:var(--wipe,var(--bg-2));transform:translateY(0);transition:transform 1.05s cubic-bezier(.7,0,.2,1) calc(var(--rd,0ms) + var(--fd,0ms) + 120ms)}
+.m .ad-card{--wipe:var(--dark)}
+.m .rubro{--wipe:var(--bg)}
+.m .feat-media figure:nth-child(2){--fd:140ms}
+.m .feat-media figure:nth-child(3){--fd:280ms}
+.m .reveal.in .card-img::before,.m .reveal.in figure::before,.m .ad-card.in::before,.m .rubro.in::before{transform:translateY(101%)}
+.m .reveal:not(.in) img{transform:scale(1.14)}
+.m .feat-media img,.m .card-img img,.m .rubro img{transition:transform 1.5s cubic-bezier(.2,.8,.2,1)}
+.m .ad-card img{transition:opacity .45s ease,transform 1.5s cubic-bezier(.2,.8,.2,1)}
+@media (prefers-reduced-motion:reduce){.nav{transition:none}}
 </style>
 </head>
 <body>
@@ -416,8 +424,7 @@ footer .logo small{color:var(--on-dark-2)}
 </header>
 
 <main id="top">
-<section class="hero" data-glow>
-  <div class="hero-glow" aria-hidden="true"></div>
+<section class="hero">
   <img src="img/hero.jpg" alt="Recepción de Nitro Gym Castelar: mostrador de hormigón con listones de madera, cielorraso naranja y ladrillo visto" width="960" height="1280">
   <div class="wrap">
     <h1 data-split>Construimos espacios que hacen <span class="g">rendir</span> tu empresa.</h1>

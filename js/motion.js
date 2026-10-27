@@ -137,19 +137,6 @@
 
   if(!fine)return;
 
-  // Brillo que sigue al mouse en el hero
-  var glowBox=document.querySelector('[data-glow]');
-  if(glowBox){
-    var gq=null;
-    glowBox.addEventListener('pointermove',function(e){
-      if(gq)return;var cx=e.clientX,cy=e.clientY;
-      gq=raf(function(){gq=null;var r=glowBox.getBoundingClientRect();
-        glowBox.style.setProperty('--mx',((cx-r.left)/r.width*100).toFixed(1)+'%');
-        glowBox.style.setProperty('--my',((cy-r.top)/r.height*100).toFixed(1)+'%');
-      });
-    });
-  }
-
   // Botones magnéticos: se descuenta el desplazamiento ya aplicado para que no tiemblen
   document.querySelectorAll('.magnetic').forEach(function(b){
     var ox=0,oy=0;
