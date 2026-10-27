@@ -2,6 +2,10 @@
 (function(){
   var h=document.documentElement;
 
+  // La dirección se muestra siempre sin .html (/inmobiliarias, /), aunque se entre con la extensión
+  var limpia=location.pathname.replace(/\/index\.html$/,'/').replace(/\.html$/,'');
+  if(limpia!==location.pathname)try{history.replaceState(null,'',limpia+location.search+location.hash)}catch(e){}
+
   // Al recargar (F5) o al entrar a una página, siempre arranca arriba de todo.
   // Solo se respeta un #ancla cuando se llega por un link (ej. "Ver todas las obras").
   try{history.scrollRestoration='manual'}catch(e){}

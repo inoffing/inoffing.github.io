@@ -7,6 +7,12 @@ const paginas = fs.readdirSync(raiz).filter(f => f.endsWith('.html'));
 const scripts = fs.readdirSync(path.join(raiz, 'js')).filter(f => f.endsWith('.js')).map(f => 'js/' + f);
 let fallas = 0;
 
+// Resuelve como GitHub Pages: "/" → index.html, "/inmobiliarias" → inmobiliarias.html
+function existe(ruta) {
+  const r = path.join(raiz, ruta.replace(/^\//, ''));
+  return [r, r + '.html', path.join(r, 'index.html')].some(f => fs.existsSync(f) && fs.statSync(f).isFile());
+}
+
 function chequear(ok, msg) {
   console.log((ok ? '  ok   ' : '  FALLA ') + msg);
   if (!ok) fallas++;
@@ -28,6 +34,8 @@ for (const pag of paginas) {
   chequear(!/\son[a-z]+\s*=/i.test(html), 'sin atributos onclick/onload');
   chequear(!/[\w.+-]+@[\w-]+\.[a-z.]{2,}/i.test(html), 'ningún mail escrito en el HTML');
 
+  const conHtml = [...html.matchAll(/href="([^"]+)"/g)].map(m => m[1]).filter(u => !/^[a-z]+:/i.test(u) && /\.html(#|\?|$)/.test(u));
+  chequear(conHtml.length === 0, 'links internos sin .html ' + conHtml.join(' '));
   for (const m of html.matchAll(/<a\s[^>]*target="_blank"[^>]*>/g)) {
     chequear(/rel="[^"]*noopener/.test(m[0]), 'target=_blank con noopener: ' + m[0].slice(0, 60));
   }
@@ -35,7 +43,7 @@ for (const pag of paginas) {
     const u = m[1];
     const ok = /^(https:|#|mailto:|tel:)/.test(u) || (!/^[a-z]+:/i.test(u) && !u.startsWith('//'));
     if (!ok) chequear(false, 'link no permitido: ' + u);
-    if (!/^[a-z#]+:|^#|^\/\//i.test(u) && !fs.existsSync(path.join(raiz, u.split(/[?#]/)[0]))) chequear(false, 'archivo inexistente: ' + u);
+    if (!/^[a-z#]+:|^#|^\/\//i.test(u) && !existe(u.split(/[?#]/)[0])) chequear(false, 'archivo inexistente: ' + u);
   }
 }
 
