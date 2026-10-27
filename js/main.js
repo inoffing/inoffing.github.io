@@ -29,7 +29,7 @@
     if(v('i-msg'))l.push('','Comentarios: '+v('i-msg'));
     return l.join('\n');
   }
-  f.addEventListener('input',function(){document.getElementById('i-mail').href='mailto:'+MAIL+'?subject='+encodeURIComponent('Derivación de cliente — inmobiliaria')+'&body='+encodeURIComponent(msg())});
+  f.addEventListener('input',function(){var im=document.getElementById('i-mail');if(im)im.href='mailto:'+MAIL+'?subject='+encodeURIComponent('Derivación de cliente — inmobiliaria')+'&body='+encodeURIComponent(msg())});
   f.addEventListener('submit',function(e){
     e.preventDefault();var err=document.getElementById('i-err');
     if(!v('i-nombre')||!v('i-tel')){err.style.display='block';return}
