@@ -9,8 +9,10 @@
 
   document.querySelectorAll('.ad-card:not(.pend),.card-img.swap').forEach(function(c){c.addEventListener('click',function(){if(window.matchMedia('(hover: none)').matches)c.classList.toggle('show')})});
   var b=document.getElementById('burger'),m=document.getElementById('menu');
-  b.addEventListener('click',function(){var o=m.classList.toggle('open');b.setAttribute('aria-expanded',o)});
-  m.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){m.classList.remove('open');b.setAttribute('aria-expanded','false')})});
+  if(b&&m){
+    b.addEventListener('click',function(){var o=m.classList.toggle('open');b.setAttribute('aria-expanded',o)});
+    m.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){m.classList.remove('open');b.setAttribute('aria-expanded','false')})});
+  }
 
   var f=document.getElementById('inmoForm'),op='Alquiler';
   f.querySelectorAll('.seg button').forEach(function(x){x.addEventListener('click',function(){

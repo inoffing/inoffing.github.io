@@ -90,14 +90,12 @@ footer .logo img{height:52px}
   .nav ul a.cta{margin-top:14px;text-align:center;border:0}
 }
 
-/* SELECTOR DE PÁGINA (Empresas / Inmobiliarias) */
-.switch{background:var(--dark);border-bottom:1px solid var(--dark-line)}
-.switch .wrap{display:flex;align-items:center;justify-content:flex-start;gap:6px;height:44px}
-.switch a{display:inline-flex;align-items:center;gap:8px;height:30px;padding:0 14px;border-radius:999px;font:600 13.5px/1 var(--display);color:var(--on-dark-2);text-decoration:none;transition:background .2s,color .2s}
-.switch a:hover{color:#fff}
-.switch a[aria-current="page"]{background:var(--green);color:var(--on-green)}
-.switch .sw-sub{margin-left:auto;font:500 12.5px var(--sans);color:var(--on-dark-2)}
-@media (max-width:600px){.switch .wrap{justify-content:center}.switch a{flex:1;justify-content:center;font-size:14px;height:32px}.switch .sw-sub{display:none}}
+/* BOTÓN PARA CAMBIAR DE PÁGINA */
+.nav-go{display:inline-flex;align-items:center;gap:8px;height:46px;padding:0 22px;border-radius:999px;font:600 15px/1 var(--display);text-decoration:none;white-space:nowrap;background:var(--green);color:var(--on-green);border:2px solid var(--green);transition:background .2s,color .2s,border-color .2s}
+.nav-go:hover{background:#74C267;border-color:#74C267}
+.nav-go.back{background:transparent;color:var(--ink);border-color:var(--ink)}
+.nav-go.back:hover{background:var(--ink);color:var(--bg)}
+@media (max-width:600px){.nav-go{height:42px;padding:0 18px;font-size:14px}}
 .hero-link{text-decoration:none;color:#fff}
 .hero-link:hover i{background:#74C267}
 
