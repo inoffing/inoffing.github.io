@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-Wv5ASi3tVuRilZYGDPdOXr1HK6aLm2H+2QS9MY4MzHw='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'none'; base-uri 'none'; form-action 'self'; object-src 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'none'; base-uri 'none'; form-action 'self'; object-src 'none'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <title>inOffing</title>
 <meta name="description" content="inOffing Smart Spaces: diseño y construcción de gimnasios, oficinas y locales gastronómicos para empresas, llave en mano.">
@@ -14,15 +14,32 @@
 <meta property="og:url" content="https://inoffing.github.io/">
 <meta property="og:title" content="inOffing Smart Spaces">
 <meta property="og:description" content="Diseño y construcción de gimnasios, oficinas y locales gastronómicos para empresas, llave en mano.">
-<meta property="og:image" content="https://inoffing.github.io/img/hero.jpg">
+<meta property="og:image" content="https://inoffing.github.io/img/og.jpg">
 <meta property="og:image:type" content="image/jpeg">
-<meta property="og:image:width" content="960">
-<meta property="og:image:height" content="1280">
-<meta property="og:image:alt" content="Recepción de Nitro Gym Castelar, proyecto de inOffing">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Salón de Nitro Gym San Justo construido por inOffing, con el logo de inOffing">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#141414">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "GeneralContractor",
+  "name": "inOffing Smart Spaces",
+  "description": "Diseño y construcción de gimnasios, oficinas y locales gastronómicos para empresas, llave en mano.",
+  "url": "https://inoffing.github.io/",
+  "image": "https://inoffing.github.io/img/og.jpg",
+  "logo": "https://inoffing.github.io/img/logo.png",
+  "telephone": "+54 9 11 5937-7885",
+  "foundingDate": "2010",
+  "address": { "@type": "PostalAddress", "streetAddress": "Don Bosco 195", "addressLocality": "San Isidro", "addressRegion": "Buenos Aires", "addressCountry": "AR" },
+  "areaServed": "Argentina"
+}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="js/early.js"></script>
 <link rel="icon" href="img/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="192x192" href="img/favicon.png">
 <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
@@ -332,9 +349,51 @@ footer .logo small{color:var(--on-dark-2)}
 .side span{writing-mode:vertical-rl;transform:rotate(180deg);font:600 13px var(--display);letter-spacing:.04em}
 .side:hover{background:#74C267}
 @media (max-width:760px){.side{top:auto;bottom:18px;right:18px;transform:none;border-radius:999px;padding:15px}.side span{display:none}.side svg{width:24px;height:24px}}
+
+/* MOVIMIENTO (solo con JS y sin "reducir movimiento"; todo entra de arriba hacia abajo) */
+.intro{display:none}
+.hero-glow{position:absolute;inset:0;z-index:1;pointer-events:none;opacity:0;transition:opacity .6s;background:radial-gradient(520px circle at var(--mx,70%) var(--my,40%),rgba(99,179,86,.22),transparent 60%)}
+.hero:hover .hero-glow{opacity:1}
+.hero .wrap{z-index:2}
+.nav{transition:transform .35s ease}
+.nav.nav-hide{transform:translateY(-100%)}
+.modelo{border-top-color:var(--line);position:relative}
+.modelo::before{content:"";position:absolute;left:0;right:0;top:-3px;height:3px;background:var(--green);transform-origin:0 50%;transform:scaleX(1)}
+.w{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.12em;margin-bottom:-.12em}
+.wi{display:inline-block}
+
+.m .intro{position:fixed;inset:0;z-index:200;background:var(--dark);display:none;align-items:center;justify-content:center;cursor:pointer;transition:transform .7s cubic-bezier(.7,0,.2,1)}
+.m.m-intro .intro{display:flex}
+.intro-in{display:flex;flex-direction:column;align-items:center;gap:26px}
+.intro-in img:first-child{width:84px;height:84px;opacity:0;transform:translateY(-40px) scale(.9);transition:opacity .5s,transform .7s cubic-bezier(.2,.8,.2,1)}
+.intro-in img:last-child{width:min(280px,64vw);height:auto;opacity:0;transform:translateY(-20px);transition:opacity .5s .3s,transform .6s .3s cubic-bezier(.2,.8,.2,1)}
+.intro.go .intro-in img{opacity:1;transform:none}
+.intro.out{transform:translateY(-100%)}
+.m.m-intro body{overflow:hidden}
+
+.m .reveal{opacity:0;transform:translateY(-26px)}
+.m .reveal.in{opacity:1;transform:none;transition:opacity .7s ease var(--rd,0ms),transform .8s cubic-bezier(.2,.8,.2,1) var(--rd,0ms)}
+.m [data-split]:not(.split-ready){opacity:0}
+.m [data-split] .wi{transform:translateY(-110%);opacity:0;transition:transform .8s cubic-bezier(.2,.8,.2,1),opacity .5s;transition-delay:calc(var(--rd,0ms) + var(--i)*45ms)}
+.m [data-split].in .wi,.m.hero-go .hero h1 .wi{transform:none;opacity:1}
+.m .hero h1 .wi{transition-delay:calc(var(--i)*70ms)}
+.m [data-hero-in]{opacity:0;transform:translateY(-18px);transition:opacity .7s,transform .8s cubic-bezier(.2,.8,.2,1);transition-delay:calc(.45s + var(--hd)*.15s)}
+.m.hero-go [data-hero-in]{opacity:1;transform:none}
+.m .hero>img{transform:scale(1.07);transition:transform 2.2s cubic-bezier(.2,.8,.2,1)}
+.m.hero-go .hero>img{transform:none}
+.m [data-scrub] .wi{opacity:.28}
+.m [data-scrub] .wi.lit{opacity:1}
+.m [data-scrub] .w{overflow:visible}
+.m [data-progress]::before{transform:scaleX(var(--p,0))}
+.m [data-progress] .paso .n{transition:color .3s}
+.m [data-progress] .paso:not(.on) .n{color:var(--ink-3)}
+.magnetic{will-change:transform}
+.m .magnetic{transition:transform .25s cubic-bezier(.2,.8,.2,1),background .2s,color .2s,border-color .2s}
+@media (prefers-reduced-motion:reduce){.nav{transition:none}.hero-glow{display:none}}
 </style>
 </head>
 <body>
+<div class="intro" data-intro aria-hidden="true"><div class="intro-in"><img src="img/favicon.png" alt="" width="192" height="192"><img src="img/logo-light.png" alt="" width="756" height="206"></div></div>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <filter id="rough" x="-5%" y="-5%" width="110%" height="110%">
     <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="7"/>
@@ -342,7 +401,7 @@ footer .logo small{color:var(--on-dark-2)}
   </filter>
 </svg>
 
-<header class="nav">
+<header class="nav" data-nav>
   <div class="wrap">
     <a class="logo" href="#top" aria-label="inOffing Smart Spaces, inicio"><picture><source srcset="img/logo-light.png" media="(prefers-color-scheme: dark)"><img src="img/logo.png" alt="inOffing Smart Spaces" width="756" height="206"></picture></a>
     <ul id="menu">
@@ -357,13 +416,14 @@ footer .logo small{color:var(--on-dark-2)}
 </header>
 
 <main id="top">
-<section class="hero">
+<section class="hero" data-glow>
+  <div class="hero-glow" aria-hidden="true"></div>
   <img src="img/hero.jpg" alt="Recepción de Nitro Gym Castelar: mostrador de hormigón con listones de madera, cielorraso naranja y ladrillo visto" width="960" height="1280">
   <div class="wrap">
-    <h1>Construimos espacios que hacen <span class="g">rendir</span> tu empresa.</h1>
-    <p>Oficinas, gimnasios y gastronomía. Diseño, obra y mobiliario a medida, llave en mano.</p>
-    <div class="ctas">
-      <a class="pill pill-light" href="#contacto">Hablemos</a>
+    <h1 data-split>Construimos espacios que hacen <span class="g">rendir</span> tu empresa.</h1>
+    <p data-hero-in style="--hd:1">Oficinas, gimnasios y gastronomía. Diseño, obra y mobiliario a medida, llave en mano.</p>
+    <div class="ctas" data-hero-in style="--hd:2">
+      <a class="pill pill-light magnetic" href="#contacto">Hablemos</a>
     </div>
   </div>
   <span class="hero-cap">Nitro Gym · Castelar</span>
@@ -375,15 +435,15 @@ footer .logo small{color:var(--on-dark-2)}
 <section class="sec" id="nosotros">
   <div class="wrap value">
     <div>
-      <span class="eyebrow">Nosotros</span>
-      <h2 class="h2">Del plano a la llave, con <span class="g">un solo equipo</span>.</h2>
-      <p class="lead" style="margin-top:22px">Desde 2010 diseñamos y construimos espacios de trabajo para empresas. Resolvemos proyecto, instalaciones, obra y mobiliario sin que tengas que coordinar estudios ni gremios por separado.</p>
-      <div class="figures">
+      <span class="eyebrow reveal">Nosotros</span>
+      <h2 class="h2" data-split>Del plano a la llave, con <span class="g">un solo equipo</span>.</h2>
+      <p class="lead" style="margin-top:22px" data-scrub>Desde 2010 diseñamos y construimos espacios de trabajo para empresas. Resolvemos proyecto, instalaciones, obra y mobiliario sin que tengas que coordinar estudios ni gremios por separado.</p>
+      <div class="figures reveal">
         <div><b>2010</b><span>diseñando y construyendo</span></div>
-        <div><b>50+</b><span>empresas e instituciones clientes</span></div>
+        <div><b data-count="50" data-suffix="+">50+</b><span>empresas e instituciones clientes</span></div>
       </div>
     </div>
-    <ul class="pillars">
+    <ul class="pillars reveal">
       <li>
         <svg viewBox="0 0 48 48" aria-hidden="true"><circle class="sk" cx="24" cy="18" r="8"/><path class="sk" d="M10 41 C11 32 17 28.5 24 28.6 C31 28.5 37 32 38 41"/></svg>
         <div><b>Un solo interlocutor</b><span>Una persona responsable desde el primer relevamiento hasta la postventa.</span></div>
@@ -402,15 +462,15 @@ footer .logo small{color:var(--on-dark-2)}
 
 <section class="sec" id="proyectos" style="background:var(--bg-2)">
   <div class="wrap">
-    <div class="head"><div><span class="eyebrow">Proyectos</span><h2 class="h2">Obras destacadas</h2></div><p class="lead">Espacios entregados y en uso, del campus universitario a la planta corporativa.</p></div>
+    <div class="head"><div><span class="eyebrow reveal">Proyectos</span><h2 class="h2" data-split>Obras destacadas</h2></div><p class="lead reveal">Espacios entregados y en uso, del campus universitario a la planta corporativa.</p></div>
 
     <article class="feat" id="pepperdine">
-      <div class="feat-media">
+      <div class="feat-media reveal">
         <figure><img src="img/pep-fachada.jpg" alt="Casona de la sede Pepperdine con fachada cubierta de vegetación y jardín" loading="lazy"></figure>
         <figure><img src="img/pep-pileta.jpg" alt="Vista aérea del deck de madera, la pileta y los jardines de la sede Pepperdine" loading="lazy" style="object-position:50% 40%"></figure>
         <figure><img src="img/pep-ventanal.jpg" alt="Ventanal en arco sobre deck de madera con enredaderas" loading="lazy"></figure>
       </div>
-      <div class="feat-body">
+      <div class="feat-body reveal">
         <span class="num">01</span>
         <h3>Pepperdine University</h3>
         <span class="loc">Sede Buenos Aires · Educación</span>
@@ -420,12 +480,12 @@ footer .logo small{color:var(--on-dark-2)}
     </article>
 
     <article class="feat rev" id="satus">
-      <div class="feat-media">
+      <div class="feat-media reveal">
         <figure><img src="img/satus-sala.jpg" alt="Sala de capacitación con mesas en U y pantalla de proyección" loading="lazy"></figure>
         <figure><img src="img/satus-recepcion.jpg" alt="Recepción de Satus Aguer con revestimiento de listones de madera, logo corpóreo y mostrador gris" loading="lazy"></figure>
         <figure><img src="img/satus-tabiques.jpg" alt="Tabiques móviles plegados en la sala" loading="lazy"></figure>
       </div>
-      <div class="feat-body">
+      <div class="feat-body reveal">
         <span class="num">02</span>
         <h3>Satus Aguer</h3>
         <span class="loc">Oficinas corporativas · Buenos Aires</span>
@@ -435,15 +495,15 @@ footer .logo small{color:var(--on-dark-2)}
     </article>
 
     <div class="more">
-      <article class="card">
+      <article class="card reveal">
         <div class="card-img swap" tabindex="0"><img src="img/agrana.jpg" alt="Torre del edificio de las oficinas de Agrana en Vicente López" loading="lazy"><img class="in" src="img/agrana-interior.jpg" alt="Interior de las oficinas de Agrana con puestos de trabajo, tabiques y cielorraso técnico" loading="lazy"><span class="swap-tag"><span class="d">Exterior</span><span class="a">Interior</span></span></div>
         <div class="card-body"><span class="rub">Oficinas · Llave en mano</span><h3>Agrana Argentina</h3><span class="loc">Vicente López · 350 m²</span><p>Oficinas cerradas, espacios operativos, salas de reunión y recepción, con mobiliario a medida. Entrega llave en mano.</p></div>
       </article>
-      <article class="card">
+      <article class="card reveal">
         <div class="card-img"><img src="img/dashi.jpg" alt="Barra de sushi de Dashi con vitrina refrigerada, banquetas tapizadas y luminarias colgantes" loading="lazy"></div>
         <div class="card-body"><span class="rub">Gastronomía</span><h3>Dashi</h3><span class="loc">Buenos Aires · 2 plantas</span><p>Salón, privados en planta alta, baños, barra y fachada con cartelería y toldos para la cadena.</p></div>
       </article>
-      <article class="card">
+      <article class="card reveal">
         <div class="card-img"><img src="img/schueco.jpg" alt="Showroom de Schüco con exhibidores de aberturas, piso de madera y sector de atención" loading="lazy"></div>
         <div class="card-body"><span class="rub">Showroom corporativo</span><h3>Schüco</h3><span class="loc">Buenos Aires</span><p>Showroom de sistemas de aberturas: exhibidores de carpinterías, piso de madera, iluminación embutida y sector de atención a clientes.</p></div>
       </article>
@@ -454,27 +514,27 @@ footer .logo small{color:var(--on-dark-2)}
 
 <section class="sec ad" id="nitro">
   <div class="wrap">
-    <div class="head"><div><span class="eyebrow">Nitro Gym · Antes y después</span><h2 class="h2">De local vacío a gimnasio en marcha.</h2></div><p class="lead">Diseñamos y construimos las sedes de la cadena con un mismo estándar de marca.</p></div>
+    <div class="head"><div><span class="eyebrow reveal">Nitro Gym · Antes y después</span><h2 class="h2" data-split>De local vacío a gimnasio en marcha.</h2></div><p class="lead reveal">Diseñamos y construimos las sedes de la cadena con un mismo estándar de marca.</p></div>
     <div class="ad-grid">
-      <div class="ad-card wide" tabindex="0">
+      <div class="ad-card reveal wide" tabindex="0">
         <img class="despues" src="img/ng-sala-despues.jpg" alt="Salón de Nitro Gym San Justo con luminarias hexagonales y pista de césped" loading="lazy">
         <img class="antes" src="img/ng-sala-antes.jpg" alt="El mismo galpón vacío al inicio de la obra" loading="lazy">
         <span class="ad-tag"><span class="d">Después</span><span class="a">Antes</span></span>
         <div class="ad-body"><b>San Justo</b><span>Terminada · De galpón a sala de entrenamiento</span></div>
       </div>
-      <div class="ad-card" tabindex="0">
+      <div class="ad-card reveal" tabindex="0">
         <img class="despues" src="img/ng-recep-despues.jpg" alt="Recepción de Nitro Gym Moreno terminada, con mostrador de mármol negro y luminarias cuadradas" loading="lazy">
         <img class="antes" src="img/ng-recep-antes.jpg" alt="La misma recepción durante la obra, con el mostrador en placa de yeso" loading="lazy">
         <span class="ad-tag"><span class="d">Después</span><span class="a">Antes</span></span>
         <div class="ad-body"><b>Moreno</b><span>Terminada · Recepción y mostrador</span></div>
       </div>
-      <div class="ad-card" tabindex="0">
+      <div class="ad-card reveal" tabindex="0">
         <img class="despues" src="img/ng-entrepiso-despues.jpg" alt="Sala de Nitro Gym Castelar con entrepiso, ladrillo visto y luminarias lineales" loading="lazy">
         <img class="antes" src="img/ng-entrepiso-antes.jpg" alt="La misma sala en obra, con andamios y estructura a la vista" loading="lazy">
         <span class="ad-tag"><span class="d">Después</span><span class="a">Antes</span></span>
         <div class="ad-body"><b>Castelar</b><span>Terminada · Entrepiso, ladrillo visto e iluminación</span></div>
       </div>
-      <div class="ad-card pend wide" tabindex="0" id="ad-ballester">
+      <div class="ad-card reveal pend wide" tabindex="0" id="ad-ballester">
         <!-- Cuando esté la foto terminada: agregar <img class="despues" src="img/ng-ballester-despues.jpg" ...>, cambiar la clase de la foto de abajo a "antes" y quitar "pend" -->
         <img class="despues" src="img/ng-ballester-antes.jpg" alt="Frente del galpón de Ballester antes de la obra" loading="lazy">
         <span class="ad-tag">Antes</span>
@@ -487,32 +547,32 @@ footer .logo small{color:var(--on-dark-2)}
 
 <section class="sec" id="rubros">
   <div class="wrap">
-    <div class="head"><div><span class="eyebrow">Rubros</span><h2 class="h2">Espacios productivos</h2></div><p class="lead">Cada rubro tiene su lógica de uso, instalaciones e imagen. Diseñamos a partir de cómo funciona tu negocio.</p></div>
+    <div class="head"><div><span class="eyebrow reveal">Rubros</span><h2 class="h2" data-split>Espacios productivos</h2></div><p class="lead reveal">Cada rubro tiene su lógica de uso, instalaciones e imagen. Diseñamos a partir de cómo funciona tu negocio.</p></div>
     <div class="rubros">
-      <article class="rubro"><img src="img/nitro-sala.jpg" alt="Sala de entrenamiento de Nitro Gym" loading="lazy"><div class="rubro-body"><h3>Gimnasios</h3><p>Salas de entrenamiento, recepción, vestuarios y tienda.</p></div></article>
-      <article class="rubro"><img src="img/oficinas.jpg" alt="Oficina de dirección con escritorio de madera, sillones de cuero y muebles a medida" loading="lazy"><div class="rubro-body"><h3>Oficinas</h3><p>Plantas corporativas, salas de reunión, recepciones y puestos operativos.</p></div></article>
-      <article class="rubro"><img src="img/gastronomia.jpg" alt="Salón de restaurante con mesas, cava vidriada de vinos y cocina a la vista" loading="lazy"><div class="rubro-body"><h3>Gastronomía</h3><p>Salones, barras, privados y fachadas.</p></div></article>
+      <article class="rubro reveal"><img src="img/nitro-sala.jpg" alt="Sala de entrenamiento de Nitro Gym" loading="lazy"><div class="rubro-body"><h3>Gimnasios</h3><p>Salas de entrenamiento, recepción, vestuarios y tienda.</p></div></article>
+      <article class="rubro reveal"><img src="img/oficinas.jpg" alt="Oficina de dirección con escritorio de madera, sillones de cuero y muebles a medida" loading="lazy"><div class="rubro-body"><h3>Oficinas</h3><p>Plantas corporativas, salas de reunión, recepciones y puestos operativos.</p></div></article>
+      <article class="rubro reveal"><img src="img/gastronomia.jpg" alt="Salón de restaurante con mesas, cava vidriada de vinos y cocina a la vista" loading="lazy"><div class="rubro-body"><h3>Gastronomía</h3><p>Salones, barras, privados y fachadas.</p></div></article>
     </div>
   </div>
 </section>
 
 <section class="sec" id="servicios" style="padding-top:0">
   <div class="wrap">
-    <div class="head"><div><span class="eyebrow">Servicios</span><h2 class="h2">Cómo trabajamos</h2></div><p class="lead">Cuatro etapas con un mismo responsable. Podés contratar el proceso completo o la etapa que necesites.</p></div>
-    <div class="modelo">
-      <div class="paso"><span class="n">01</span>
+    <div class="head"><div><span class="eyebrow reveal">Servicios</span><h2 class="h2" data-split>Cómo trabajamos</h2></div><p class="lead reveal">Cuatro etapas con un mismo responsable. Podés contratar el proceso completo o la etapa que necesites.</p></div>
+    <div class="modelo" data-progress>
+      <div class="paso reveal"><span class="n">01</span>
         <svg viewBox="0 0 64 64" aria-hidden="true"><circle class="sk" cx="27" cy="27" r="15"/><path class="sk" d="M38 38.4 L53 53.2"/></svg>
         <h3>Relevamiento</h3><p>Entendemos cómo trabaja tu equipo y qué necesita el espacio.</p>
         <ul><li>Visita y medición del inmueble</li><li>Programa de necesidades</li><li>Estimación inicial</li></ul></div>
-      <div class="paso"><span class="n">02</span>
+      <div class="paso reveal"><span class="n">02</span>
         <svg viewBox="0 0 64 64" aria-hidden="true"><path class="sk" d="M8 50 L8.4 14 L44 13.6"/><path class="sk" d="M8.2 30 L26 30.3 L26.2 50"/><path class="sk" d="M14 50.2 L56 49.8"/><path class="sk" d="M40 40 L54.5 25.2 L58.4 29 L43.8 43.6 L38.6 45.2 Z"/></svg>
         <h3>Diseño</h3><p>Proyecto a medida de tu operación y tu marca.</p>
         <ul><li>Optimización de la superficie</li><li>Imagen corporativa</li><li>Renders y documentación</li></ul></div>
-      <div class="paso"><span class="n">03</span>
+      <div class="paso reveal"><span class="n">03</span>
         <svg viewBox="0 0 64 64" aria-hidden="true"><path class="sk" d="M6 52 L58 51.6"/><path class="sk" d="M10 51.8 L10.3 20 L54 19.6 L54.2 51.6"/><path class="sk" d="M10.2 30.6 L54 30.3 M10.2 41 L54.1 40.8"/><path class="sk" d="M24 20 L24.2 30.4 M40 19.8 L40.1 30.3 M17 30.5 L17.2 41 M32 30.4 L32.1 40.9 M47 30.3 L47.2 40.8 M24 41 L24.2 51.7 M40 40.9 L40.1 51.6"/></svg>
         <h3>Construcción</h3><p>Obra con equipo propio y seguimiento semanal.</p>
         <ul><li>Instalaciones electromecánicas</li><li>Construcción en seco</li><li>Revestimientos y mobiliario a medida</li></ul></div>
-      <div class="paso"><span class="n">04</span>
+      <div class="paso reveal"><span class="n">04</span>
         <svg viewBox="0 0 64 64" aria-hidden="true"><circle class="sk" cx="20" cy="32" r="11"/><circle class="sk" cx="20" cy="32" r="3.5"/><path class="sk" d="M31 32.2 L57 31.8 L57.2 39"/><path class="sk" d="M48 32 L48.1 38 M41 32.1 L41.2 36.4"/></svg>
         <h3>Llave en mano</h3><p>Entregamos el espacio listo para operar.</p>
         <ul><li>Entrega lista para usar</li><li>Obra nueva o remodelación</li><li>Servicio de postventa</li></ul></div>
@@ -522,15 +582,15 @@ footer .logo small{color:var(--on-dark-2)}
 
 <section class="sec clientes" id="clientes">
   <div class="wrap">
-    <div class="head"><div><span class="eyebrow">Clientes</span><h2 class="h2">Empresas que confían en nosotros</h2></div><p class="lead">Más de 50 empresas e instituciones, por rubro. Las marcadas con <b style="color:var(--green-2)">Obra</b> están en este sitio.</p></div>
+    <div class="head"><div><span class="eyebrow reveal">Clientes</span><h2 class="h2" data-split>Empresas que confían en nosotros</h2></div><p class="lead reveal">Más de 50 empresas e instituciones, por rubro. Las marcadas con <b style="color:var(--green-2)">Obra</b> están en este sitio.</p></div>
     <div class="sectors">
-      <div class="sector">
+      <div class="sector reveal">
         <div class="sector-h"><svg viewBox="0 0 48 48" aria-hidden="true"><path class="sk" d="M6 24 L42 23.8"/><path class="sk" d="M10 16 L10.2 32 M15 13 L15.1 35 M38 16 L38.2 32 M33 13 L33.1 35"/></svg><div><b>Gimnasios</b><span>Cadenas de fitness</span></div></div>
         <div class="marks">
           <a class="mark obra" href="#nitro">Nitro Gym</a>
         </div>
       </div>
-      <div class="sector">
+      <div class="sector reveal">
         <div class="sector-h"><svg viewBox="0 0 48 48" aria-hidden="true"><path class="sk" d="M8 40 L8.3 10 L28 9.8 L28.2 40"/><path class="sk" d="M28 20 L40 19.8 L40.2 40"/><path class="sk" d="M5 40.2 L43 40"/><path class="sk" d="M14 16 L14.1 18 M21 16 L21.1 18 M14 24 L14.1 26 M21 24 L21.1 26 M14 32 L14.1 34 M21 32 L21.1 34"/></svg><div><b>Oficinas corporativas</b><span>Industria y servicios</span></div></div>
         <div class="marks">
           <a class="mark obra" href="#satus">Satus Aguer</a>
@@ -559,14 +619,14 @@ footer .logo small{color:var(--on-dark-2)}
           <span class="mark">Batimat</span>
         </div>
       </div>
-      <div class="sector">
+      <div class="sector reveal">
         <div class="sector-h"><svg viewBox="0 0 48 48" aria-hidden="true"><path class="sk" d="M8 22 C8 30 14 36 24 36 C34 36 40 30 40 22 L8 22.2"/><path class="sk" d="M16 40 L32 39.8"/><path class="sk" d="M18 16 C17 13 19 11 18 8 M26 16 C25 13 27 11 26 8"/></svg><div><b>Gastronomía</b><span>Cadenas y restaurantes</span></div></div>
         <div class="marks">
           <a class="mark obra" href="#proyectos">Dashi</a>
           <span class="mark">Te Mataré Ramírez</span>
         </div>
       </div>
-      <div class="sector">
+      <div class="sector reveal">
         <div class="sector-h"><svg viewBox="0 0 48 48" aria-hidden="true"><path class="sk" d="M19 8 L19.2 20 L9 38 C8 40 9 41.5 11 41.5 L37 41.4 C39 41.5 40 40 39 38 L29 20 L29.1 8"/><path class="sk" d="M16 8 L32 7.9"/><path class="sk" d="M13.5 31 L34.5 30.8"/></svg><div><b>Laboratorios</b><span>Industria farmacéutica</span></div></div>
         <div class="marks">
           <span class="mark">Laboratorio Synthon</span>
@@ -580,7 +640,7 @@ footer .logo small{color:var(--on-dark-2)}
           <span class="mark">P.G.I.</span>
         </div>
       </div>
-      <div class="sector">
+      <div class="sector reveal">
         <div class="sector-h"><svg viewBox="0 0 48 48" aria-hidden="true"><path class="sk" d="M8 40 L8.2 20 L24 9 L40 19.8 L40.2 40"/><path class="sk" d="M5 40.2 L43 40"/><path class="sk" d="M19 40 L19.1 28 L29 27.9 L29.1 40"/></svg><div><b>Estudios, inmobiliarias y desarrollos</b><span>Arquitectura y real estate</span></div></div>
         <div class="marks">
           <span class="mark">Estudio ELES</span>
@@ -593,7 +653,7 @@ footer .logo small{color:var(--on-dark-2)}
           <span class="mark">Oficinas Boca Raton</span>
         </div>
       </div>
-      <div class="sector">
+      <div class="sector reveal">
         <div class="sector-h"><svg viewBox="0 0 48 48" aria-hidden="true"><path class="sk" d="M6 18 L24 8 L42 17.8"/><path class="sk" d="M8 18.2 L40 18"/><path class="sk" d="M12 22 L12.1 36 M20 22 L20.1 36 M28 22 L28.1 36 M36 22 L36.1 36"/><path class="sk" d="M6 40 L42 39.8"/></svg><div><b>Educación e instituciones</b><span>Universidades y sector público</span></div></div>
         <div class="marks">
           <a class="mark obra" href="#pepperdine">Pepperdine University</a>
@@ -613,16 +673,16 @@ footer .logo small{color:var(--on-dark-2)}
 <section class="sec inmo" id="inmobiliarias">
   <div class="wrap inmo-grid">
     <div>
-      <span class="eyebrow">Para inmobiliarias</span>
-      <h2 class="h2">Tu cliente alquila el local. Nosotros lo dejamos funcionando.</h2>
-      <p class="lead">Si tu cliente evalúa una oficina, un local o una planta, lo ayudamos a decidir: relevamos el inmueble, estimamos la adecuación y, si avanza, lo entregamos listo para operar.</p>
-      <ol class="steps">
+      <span class="eyebrow reveal">Para inmobiliarias</span>
+      <h2 class="h2" data-split>Tu cliente alquila el local. Nosotros lo dejamos funcionando.</h2>
+      <p class="lead reveal">Si tu cliente evalúa una oficina, un local o una planta, lo ayudamos a decidir: relevamos el inmueble, estimamos la adecuación y, si avanza, lo entregamos listo para operar.</p>
+      <ol class="steps reveal">
         <li><span class="n">1</span><div><b>Nos derivás el contacto</b><span>Desde el formulario o por WhatsApp, con el inmueble y el uso que busca.</span></div></li>
         <li><span class="n">2</span><div><b>Relevamos y estimamos</b><span>Visitamos el inmueble y le damos al cliente costo y plazos de adecuación.</span></div></li>
         <li><span class="n">3</span><div><b>Seguimiento compartido</b><span>Te mantenemos al tanto del avance para acompañar la operación.</span></div></li>
       </ol>
     </div>
-    <form class="form" id="inmoForm" novalidate>
+    <form class="form reveal" id="inmoForm" novalidate>
       <h3>Derivar un cliente</h3>
       <p>Se abre WhatsApp con los datos cargados.</p>
       <div class="seg" role="group" aria-label="Tipo de operación">
@@ -645,7 +705,7 @@ footer .logo small{color:var(--on-dark-2)}
       <div class="f"><label for="i-msg">Comentarios</label><textarea id="i-msg" placeholder="Estado del inmueble, plazos, lo que necesite el cliente"></textarea></div>
       <button class="pill pill-green" type="submit">Enviar por WhatsApp</button>
       <p class="err" id="i-err">Completá tu nombre y teléfono para enviar.</p>
-      <div class="alt">o por mail a <a id="i-mail" href="mailto:arq@hafestudio.com.ar">arq@hafestudio.com.ar</a></div>
+      <div class="alt">o por mail a <a id="i-mail" href="#contacto" data-mail="Derivación de cliente — inmobiliaria">mail</a></div>
     </form>
   </div>
 </section>
@@ -653,17 +713,17 @@ footer .logo small{color:var(--on-dark-2)}
 <section class="sec" id="contacto">
   <div class="wrap contacto">
     <div>
-      <span class="eyebrow">Contacto</span>
-      <h2 class="h2">Hablemos de tu <span class="g">proyecto</span>.</h2>
-      <p class="lead" style="margin-bottom:34px">Contanos qué necesitás y coordinamos una visita. Trabajamos en AMBA y en el interior del país.</p>
+      <span class="eyebrow reveal">Contacto</span>
+      <h2 class="h2" data-split>Hablemos de tu <span class="g">proyecto</span>.</h2>
+      <p class="lead reveal" style="margin-bottom:34px">Contanos qué necesitás y coordinamos una visita. Trabajamos en AMBA y en el interior del país.</p>
       <div class="ctas">
-        <a class="pill pill-green" href="https://wa.me/5491159377885?text=Hola%2C%20quiero%20consultar%20por%20un%20proyecto%20con%20inOffing." target="_blank" rel="noopener">Escribir por WhatsApp</a>
-        <a class="pill pill-dark" href="mailto:arq@hafestudio.com.ar?subject=Consulta%20inOffing">Enviar un mail</a>
+        <a class="pill pill-green magnetic" href="https://wa.me/5491159377885?text=Hola%2C%20quiero%20consultar%20por%20un%20proyecto%20con%20inOffing." target="_blank" rel="noopener">Escribir por WhatsApp</a>
+        <a class="pill pill-dark magnetic" href="#contacto" data-mail="Consulta inOffing" data-mail-keep>Enviar un mail</a>
       </div>
     </div>
-    <ul class="datos">
+    <ul class="datos reveal">
       <li><span>Teléfono</span><a href="tel:+5491159377885">11 5937 7885</a></li>
-      <li><span>Email</span><a href="mailto:arq@hafestudio.com.ar">arq@hafestudio.com.ar</a></li>
+      <li><span>Email</span><a href="#contacto" data-mail>Escribinos</a></li>
       <li><span>Estudio</span><div>Don Bosco 195<br>San Isidro, Buenos Aires</div></li>
     </ul>
   </div>
@@ -672,14 +732,14 @@ footer .logo small{color:var(--on-dark-2)}
 
 <footer>
   <div class="wrap">
-    <div class="foot">
+    <div class="foot reveal">
       <div>
         <a class="logo" href="#top" aria-label="inOffing Smart Spaces, inicio"><img src="img/logo-light.png" alt="inOffing Smart Spaces" width="756" height="206"></a>
         <p>Diseño y construcción de espacios productivos para empresas, desde 2010.</p>
       </div>
       <div><h4>Empresa</h4><ul><li><a href="#nosotros">Nosotros</a></li><li><a href="#proyectos">Proyectos</a></li><li><a href="#servicios">Servicios</a></li><li><a href="#inmobiliarias">Inmobiliarias</a></li></ul></div>
       <div><h4>Rubros</h4><ul><li><a href="#rubros">Gimnasios</a></li><li><a href="#rubros">Oficinas</a></li><li><a href="#rubros">Gastronomía</a></li></ul></div>
-      <div><h4>Contacto</h4><ul><li><a href="tel:+5491159377885">11 5937 7885</a></li><li><a href="mailto:arq@hafestudio.com.ar">arq@hafestudio.com.ar</a></li><li>Don Bosco 195, San Isidro</li></ul></div>
+      <div><h4>Contacto</h4><ul><li><a href="tel:+5491159377885">11 5937 7885</a></li><li><a href="#contacto" data-mail>Escribinos un mail</a></li><li>Don Bosco 195, San Isidro</li></ul></div>
     </div>
     <div class="legal"><span>© inOffing Smart Spaces</span><span>San Isidro · Buenos Aires · Argentina</span></div>
   </div>
@@ -690,32 +750,7 @@ footer .logo small{color:var(--on-dark-2)}
   <span>Contacto</span>
 </a>
 
-<script>
-(function(){
-  document.querySelectorAll('.ad-card:not(.pend),.card-img.swap').forEach(function(c){c.addEventListener('click',function(){if(window.matchMedia('(hover: none)').matches)c.classList.toggle('show')})});
-  var b=document.getElementById('burger'),m=document.getElementById('menu');
-  b.addEventListener('click',function(){var o=m.classList.toggle('open');b.setAttribute('aria-expanded',o)});
-  m.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){m.classList.remove('open');b.setAttribute('aria-expanded','false')})});
-
-  var f=document.getElementById('inmoForm'),op='Alquiler';
-  f.querySelectorAll('.seg button').forEach(function(x){x.addEventListener('click',function(){
-    f.querySelectorAll('.seg button').forEach(function(y){y.setAttribute('aria-pressed','false')});
-    x.setAttribute('aria-pressed','true');op=x.dataset.v;})});
-  function v(id){return document.getElementById(id).value.trim()}
-  function msg(){
-    var l=['Hola inOffing, les derivo un cliente.','','Agente: '+v('i-nombre')+(v('i-inmo')?' ('+v('i-inmo')+')':''),'Teléfono: '+v('i-tel'),'Operación: '+op,'Uso previsto: '+v('i-uso')];
-    if(v('i-zona'))l.push('Zona: '+v('i-zona'));
-    if(v('i-m2'))l.push('Superficie: '+v('i-m2'));
-    if(v('i-msg'))l.push('','Comentarios: '+v('i-msg'));
-    return l.join('\n');
-  }
-  f.addEventListener('input',function(){document.getElementById('i-mail').href='mailto:arq@hafestudio.com.ar?subject='+encodeURIComponent('Derivación de cliente — inmobiliaria')+'&body='+encodeURIComponent(msg())});
-  f.addEventListener('submit',function(e){
-    e.preventDefault();var err=document.getElementById('i-err');
-    if(!v('i-nombre')||!v('i-tel')){err.style.display='block';return}
-    err.style.display='none';window.open('https://wa.me/5491159377885?text='+encodeURIComponent(msg()),'_blank','noopener');
-  });
-})();
-</script>
+<script src="js/main.js"></script>
+<script src="js/motion.js"></script>
 </body>
 </html>
